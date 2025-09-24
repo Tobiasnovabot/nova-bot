@@ -1,0 +1,13 @@
+groups:
+- name: novax_test_alerts
+  interval: 10s
+  rules:
+  - alert: NovaxTestPing
+    expr: vector(1)
+    for: 45s
+    labels:
+      severity: info
+      route: telegram
+    annotations:
+      summary: "NOVAX alert test"
+      description: "Test-ALERT fra Prometheus for å verifisere Telegram-push."

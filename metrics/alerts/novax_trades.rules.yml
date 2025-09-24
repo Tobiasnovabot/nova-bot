@@ -1,0 +1,23 @@
+groups:
+- name: novax_trades
+  rules:
+  - record: novax_trades_winrate_15m_max
+    expr: max_over_time(novax_trades_winrate[15m])
+
+  - alert: NovaXWinrateCrumble
+    expr: novax_trades_winrate_15m_max < 0.35
+    for: 10m
+    labels: {severity: warning}
+    annotations: {summary: "Winrate < 35% siste 15m"}
+
+  - alert: NovaXPayoffLow
+    expr: novax_trades_payoff < 0.8
+    for: 15m
+    labels: {severity: warning}
+    annotations: {summary: "Payoff < 0.8 siste 15m"}
+
+  - alert: NovaXNoClosedTrades
+    expr: novax_trades_closed_total == 0
+    for: 24h
+    labels: {severity: info}
+    annotations: {summary: "Ingen lukkede handler siste døgn (mulig tørke eller stopp)"}

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -e
+mkdir -p "$HOME/nova-bot/logs" /tmp/novax-tg
+if pgrep -f 'bot_main\.py' >/dev/null; then
+  echo "Bot kjører allerede."; exit 0
+fi
+flock -n /tmp/novax-tg/lock nohup env TELEGRAM_BOT_TOKEN="${TELEGRAM_BOT_TOKEN:?mangler}" \
+  "$HOME/nova-bot/bot_main.py" > "$HOME/nova-bot/logs/bot.out" 2>&1 & echo $! > "$HOME/nova-bot/bot.pid"
+echo "Startet bot, pid $(cat $HOME/nova-bot/bot.pid)"

@@ -1,0 +1,26 @@
+groups:
+- name: infra
+  rules:
+  - alert: NodeExporterDown
+    expr: max_over_time(up{job="node"}[2m]) == 0
+    for: 2m
+    labels: { severity: critical }
+    annotations: { summary: "node_exporter er nede (>2m)" }
+
+  - alert: DiskSpaceLowRoot
+    expr: (1 - node_filesystem_avail_bytes{fstype!~"tmpfs|overlay",mountpoint="/"} / node_filesystem_size_bytes{fstype!~"tmpfs|overlay",mountpoint="/"}) * 100 > 85
+    for: 5m
+    labels: { severity: warning }
+    annotations: { summary: "Disk / >85% brukt" }
+
+  - alert: MemoryPressureHigh
+    expr: (1 - node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) * 100 > 90
+    for: 5m
+    labels: { severity: critical }
+    annotations: { summary: "RAM-bruk >90%" }
+
+  - alert: CpuLoadHigh
+    expr: node_load1 / count(count(node_cpu_seconds_total{mode="idle"}) by (instance)) > 2
+    for: 10m
+    labels: { severity: warning }
+    annotations: { summary: "CPU load høy over tid" }

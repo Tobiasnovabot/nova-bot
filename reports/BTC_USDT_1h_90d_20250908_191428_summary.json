@@ -1,0 +1,9 @@
+{
+  "start_usdt": 1000.0,
+  "end_usdt": 1000.9383601868061,
+  "return": 0.0009383601868061078,
+  "max_drawdown": 0.0013473541121554965,
+  "trades_closed": 6,
+  "winrate": 0.3333333333333333,
+  "fees_assumed": 0.001
+}

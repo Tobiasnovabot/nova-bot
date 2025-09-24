@@ -1,0 +1,9 @@
+ccxt>=4.3.0
+python-dotenv>=1.0.1
+prometheus-client>=0.20.0
+
+pandas
+numpy
+requests
+fastapi
+uvicorn

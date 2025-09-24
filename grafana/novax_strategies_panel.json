@@ -1,0 +1,7 @@
+{
+  "title": "Strategies Active",
+  "type": "stat",
+  "targets": [{"expr":"novax_strategy_count"}],
+  "options": {"reduceOptions":{"calcs":["lastNotNull"]}},
+  "gridPos": {"x":0,"y":0,"w":6,"h":4}
+}

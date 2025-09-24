@@ -1,0 +1,15 @@
+{
+  "learning_mode": true,
+  "record_signals": true,
+  "record_fills": true,
+  "feature_cache": true,
+  "walk_forward": {
+    "enabled": true,
+    "window_days": 30,
+    "step_days": 7
+  },
+  "risk": {
+    "canary": true,
+    "max_daily_dd_pct": 2.0
+  }
+}

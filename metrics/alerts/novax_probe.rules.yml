@@ -1,0 +1,20 @@
+groups:
+- name: novax_probe
+  rules:
+  - alert: NovaXProbeAPISlow
+    expr: novax_probe_api_ms > 800
+    for: 3m
+    labels: {severity: warning}
+    annotations: {summary: "Exchange API median latency > 800ms"}
+
+  - alert: NovaXProbeFailures
+    expr: novax_probe_err_count > 0
+    for: 2m
+    labels: {severity: warning}
+    annotations: {summary: "Probe failures > 0"}
+
+  - alert: NovaXWideSpreads
+    expr: avg(novax_spread_bps) by () > 80
+    for: 5m
+    labels: {severity: info}
+    annotations: {summary: "Average spread > 80 bps on probed symbols"}

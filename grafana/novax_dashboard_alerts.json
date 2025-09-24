@@ -1,0 +1,32 @@
+{
+  "title": "NOVAX — Alerts",
+  "panels": [
+    {
+      "title": "Drawdown",
+      "type": "stat",
+      "targets": [{"expr": "novax_drawdown"}],
+      "options": {"reduceOptions": {"calcs": ["lastNotNull"]}},
+      "gridPos": {"x": 0, "y": 0, "w": 6, "h": 4}
+    },
+    {
+      "title": "Gross Exposure Ratio",
+      "type": "stat",
+      "targets": [{"expr": "novax_gross_exposure_ratio"}],
+      "options": {"reduceOptions": {"calcs": ["lastNotNull"]}},
+      "gridPos": {"x": 6, "y": 0, "w": 6, "h": 4}
+    },
+    {
+      "title":"Strategier deaktivert",
+      "type":"table",
+      "targets":[{"expr":"novax_strategy_enabled==0"}],
+      "transformations":[{"id":"labelsToFields"}],
+      "gridPos":{"x":12,"y":0,"w":12,"h":6}
+    },
+    {
+      "title": "Prometheus Alerts",
+      "type": "alertlist",
+      "gridPos": {"x": 0, "y": 6, "w": 24, "h": 12}
+    }
+  ],
+  "time": {"from": "now-7d", "to": "now"}
+}

@@ -1,0 +1,349 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+import os, time, json, math, traceback
+from datetime import datetime
+import json
+from pathlib import Path
+
+import ccxt
+from nova.engine import bandit
+from nova.strategies import (
+    ema_cross, rsi_reversion, breakout, macd,
+    bb_breakout, meanrev_z, vwap_pullback,
+    keltner_breakout, adx_filter
+)
+
+LOGF = Path("logs/engine.log")
+
+def LOG_write(msg):
+    ts = datetime.utcnow().isoformat(timespec="seconds")
+    with LOGF.open("a") as f:
+        f.write(f"{ts} {msg}\n")
+
+class Engine:
+    def __init__(self, cfg):
+        self.cfg = cfg
+        self.mode = cfg.get("MODE","paper")
+        self.quote = cfg.get("QUOTES","USDT")
+        self.params = {
+    "trail_pct": float(cfg.get("TRAIL_PCT", 0.03)),
+    "breakeven_trigger": float(cfg.get("BE_TRIG", 0.01)),
+    "pyramid_max_layers": int(cfg.get("PYR_MAX", 3)),
+    "pyramid_add_pct": float(cfg.get("PYR_ADD_PCT", 0.01)),
+    "pyramid_add_usdt": float(cfg.get("PYR_ADD_USDT", 25)),
+    "tp1_pct": float(cfg.get("TP1_PCT", 0.02)),
+    "tp1_frac": float(cfg.get("TP1_FRAC", 0.3)),
+    "tp2_pct": float(cfg.get("TP2_PCT", 0.04)),
+    "tp2_frac": float(cfg.get("TP2_FRAC", 0.3)),
+            "min_volume_usd": float(cfg.get("MIN_VOL", 1e6)),
+            "universe_refresh_sec": int(cfg.get("UNIV_REFRESH", 3600)),
+            "poll_interval_sec": int(cfg.get("POLL", 15)),
+            "max_concurrent_trades": int(cfg.get("MAX_TRADES", 5))
+        }
+        self.last_universe_refresh = 0
+        self.universe = []
+        self.positions = {}
+        self.pnl_total = 0.0
+
+        self._init_exchange()
+        self._init_strategies()
+
+    def _init_exchange(self):
+        apiKey = "" if self.mode=="paper" else os.getenv("API_KEY","")
+        secret = "" if self.mode=="paper" else os.getenv("API_SECRET","")
+        self.ex = ccxt.binance({
+            "enableRateLimit": True,
+            "timeout": 30000,
+            "apiKey": apiKey,
+            "secret": secret
+        })
+
+    def _init_strategies(self):
+        cfg = self.cfg
+        self.strats = [
+            ('ema',   ema_cross.setup(cfg), ema_cross.signal, 1.0),
+            ('rsi',   rsi_reversion.setup(cfg), rsi_reversion.signal, 0.8),
+            ('bo',    breakout.setup(cfg), breakout.signal, 0.6),
+            ('macd',  macd.setup(cfg), macd.signal, 0.9),
+            ('bb',    bb_breakout.setup(cfg), bb_breakout.signal, 0.7),
+            ('mr',    meanrev_z.setup(cfg), meanrev_z.signal, 0.7),
+            ('vwap',  vwap_pullback.setup(cfg), vwap_pullback.signal, 0.5),
+            ('kc',    keltner_breakout.setup(cfg), keltner_breakout.signal, 0.6),
+            ('adx',   adx_filter.setup(cfg), adx_filter.signal, 0.5),
+        ]
+        bandit.init([s[0] for s in self.strats])
+
+    def refresh_universe(self, force=False):
+        now = time.time()
+        if not force and now-self.last_universe_refresh < self.params["universe_refresh_sec"]:
+            return
+        mk = self.ex.load_markets()
+        want = [self.quote]
+        raw=[s for s,m in mk.items()
+             if m.get("spot") and m.get("quote") in want and m.get("active") is not False
+             and not (s.endswith("DOWN/"+m.get("quote")) or s.endswith("UP/"+m.get("quote"))
+                      or "BULL" in s or "BEAR" in s)]
+        # enkel volum-filter
+        try:
+            tick=self.ex.fetch_tickers(raw[:200]); tmp=[]
+            for s in raw:
+                qv=(tick.get(s) or {}).get("quoteVolume") or 0.0
+                if qv and qv>=max(1e5, float(self.params.get("min_volume_usd",1e5))): tmp.append(s)
+            raw=tmp
+        except Exception as e:
+            LOG_write(f"universe volume-filter error {e}")
+        self.universe=raw[:50]
+        self.last_universe_refresh=now
+        LOG_write(f"universe={len(self.universe)}")
+
+    def loop(self):
+        try:
+            # nødbrems
+            if Path('PAUSE_ALL').exists():
+                LOG.warning('PAUSE_ALL present')
+                time.sleep(self.params["poll_interval_sec"])
+                return
+
+            self.refresh_universe()
+            if not self.universe:
+                time.sleep(self.params["poll_interval_sec"])
+                return
+
+            tf=self.params.get("timeframe","1h")
+            syms=self.universe[: min(50,len(self.universe))]
+
+            # hent data
+            ohlc_map={}
+            from pathlib import Path as _P
+            # FORCE_BUY_ONE: tving ett kjøp på første symbol i universet
+            from pathlib import Path as _P
+                        # FORCE_BUY_ONE: tving ett kjøp på første symbol i universet
+                        from pathlib import Path as _P
+                        if _P('FORCE_BUY_ONE').exists():
+                            try:
+                                sym = (self.universe[:1] or [None])[0]
+                                if sym:
+                                    t = tick.get(sym) or {}
+                                    o = ohlc.get(sym) or []
+                                    self._route_buy(sym, t, o)
+                            finally:
+                                _P('FORCE_BUY_ONE').unlink(missing_ok=True)
+
+                    sym = (self.universe[:1] or [None])[0]
+                    if sym:
+                        t = tick.get(sym) or {}
+                        o = ohlc.get(sym) or []
+                        self._route_buy(sym, t, o)
+                finally:
+                    _P('FORCE_BUY_ONE').unlink(missing_ok=True)
+    _P('FORCE_BUY_ONE').unlink(missing_ok=True)
+for s in syms:
+
+                    ohlc_map[s]=self.ex.fetch_ohlcv(s, timeframe=tf, limit=200)
+                except Exception:
+                    ohlc_map[s]=[]
+            tick=self.ex.fetch_tickers(syms)
+
+            # exits
+            for sym, pos in list(self.positions.items()):
+                if pos.get('status')!='open': continue
+                tt = tick.get(sym) or {}
+                if not (tt.get('last') or tt.get('close')):
+                    try: tt=self.ex.fetch_ticker(sym)
+                    except Exception: tt={'last': pos.get('entry',0)}
+                last = float(tt.get('last') or tt.get('close') or 0) or 0
+                if last<=0: continue
+                high = float(pos.get('trail_high', pos.get('entry', last)))
+                if last > high: high = last
+                pos['trail_high'] = high
+                trail = high * 0.97
+                pos['trail'] = trail
+                hit_sl = last <= float(pos.get('sl', 0)) or last <= trail
+                hit_tp = last >= float(pos.get('tp', 9e18))
+                if hit_sl or hit_tp:
+                    self._route_sell(sym, tt)
+
+            opens=sum(1 for p in self.positions.values() if p.get("status")=="open")
+            buys_this_loop=0
+            buy_cap=int(self.params.get("buy_cap_per_loop",1))
+
+            strat_vote_acc={}  # <== samler stemmer pr strategi
+
+            from pathlib import Path as _P
+if _P('FORCE_BUY_ONE').exists():
+    s0=syms[0]; tt=tick.get(s0) or {}; self._route_buy(s0, tt, ohlc_map.get(s0) or [], ['force'])
+    _P('FORCE_BUY_ONE').unlink(missing_ok=True)
+for s in syms:
+                t=tick.get(s) or {}
+                o=ohlc_map.get(s) or []
+                bw = bandit.get_weights([n for (n,_,__,w) in self.strats], s)
+                votes=0.0; buy_names=[]
+                _adx_ok = adx_filter.signal(t,o,adx_filter.setup(self.params))[1].get('adx_ok', True)
+
+                for name,params,fn,weight in self.strats:
+                    a,meta=fn(t,o,params)
+                    w = weight * bw.get(name, 1.0)
+                    # akkumuler pr arm
+                    strat_vote_acc[name] = strat_vote_acc.get(name, 0.0)
+                    if a=="buy": votes+=w; strat_vote_acc[name]+=w; buy_names.append(name)
+                    elif a=="sell": votes-=w; strat_vote_acc[name]-=w
+
+                if Path('PAUSE_BUYS').exists(): continue
+                if True and votes>0.2 and len([n for n in buy_names])>=1 and s not in self.positions and self._exposure_frac() < 0.60 and opens < int(self.params.get("max_concurrent_trades",6)):
+                    self._route_buy(s, t, o, buy_names); opens+=1; buys_this_loop+=1
+                    if buys_this_loop>=buy_cap: break
+
+            # panic sell-all
+            if Path('SELL_ALL').exists():
+                LOG.warning('SELL_ALL present; liquidating all open positions')
+                for sym in list(self.positions.keys()):
+                    tt = tick.get(sym) or {}
+                    if not (tt.get('last') or tt.get('close')):
+                        try: tt=self.ex.fetch_ticker(sym)
+                        except Exception: tt={'last': self.positions.get(sym,{}).get('entry', 0)}
+                    self._route_sell(sym, tt)
+                Path('SELL_ALL').unlink(missing_ok=True)
+
+            # skriv strat_votes.json
+            try:
+                Path("data").mkdir(exist_ok=True)
+                from datetime import timezone
+                Path("data/strat_votes.json").write_text(json.dumps({
+                    "ts": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+                    "votes": strat_vote_acc
+                }, indent=2))
+            except Exception as e:
+                LOG.warning("write strat_votes failed: %s", e)
+
+            now=time.time()
+            if now>=self.next_equity_ts:
+                self._snapshot_equity("interval")
+                self.next_equity_ts=now+60
+
+            time.sleep(self.params["poll_interval_sec"])
+
+        except Exception as e:
+            LOG.exception("loop crash: %s", e)
+            time.sleep(self.params["poll_interval_sec"])
+
+
+    def _manage_position(self, sym, tt, o):
+        # tt=ticker dict, o=ohlcv list
+        pos = self.positions.get(sym) or {}
+        if not pos or pos.get('status')!='open': return
+        price=float(tt.get('last') or tt.get('close') or pos.get('entry',0)) or 0
+        if price<=0: return
+
+        # trailing high
+        th = float(pos.get('trail_high', pos.get('entry', price)))
+        if price > th: th = price
+        pos['trail_high'] = th
+
+        # breakeven move
+        be_trig = float(pos.get('be_trig', self.params.get('breakeven_trigger',0.01)))
+        if price >= pos['entry'] * (1.0 + be_trig):
+            pos['sl'] = max(float(pos.get('sl',0)), float(pos['entry']))
+
+        # dynamic trail
+        trail_pct = float(pos.get('trail_pct', self.params.get('trail_pct',0.03)))
+        pos['trail'] = th * (1.0 - trail_pct)
+        pos['sl'] = max(float(pos.get('sl',0)), float(pos['trail']))
+
+        # partial TPs
+        tp1 = pos.get('tp1_done', False)
+        tp2 = pos.get('tp2_done', False)
+        tp1_pct = float(self.params.get('tp1_pct',0.02))
+        tp2_pct = float(self.params.get('tp2_pct',0.04))
+        if (not tp1) and price >= pos['entry'] * (1.0 + tp1_pct) and pos.get('qty',0)>0:
+            frac=float(self.params.get('tp1_frac',0.3)); q=max(0.0, pos['qty']*frac)
+            if q>0: self._route_partial_sell(sym, tt, q); pos['tp1_done']=True
+        if (not tp2) and price >= pos['entry'] * (1.0 + tp2_pct) and pos.get('qty',0)>0:
+            frac=float(self.params.get('tp2_frac',0.3)); q=max(0.0, pos['qty']*frac)
+            if q>0: self._route_partial_sell(sym, tt, q); pos['tp2_done']=True
+
+        # pyramidering
+        self._maybe_pyramid(sym, tt, o, pos)
+
+        # stop/exit
+        sl=float(pos.get('sl',0)) or 0
+        tp=float(pos.get('tp',9e18))
+        if price <= sl or price >= tp:
+            self._route_sell(sym, tt)
+
+
+    def _maybe_pyramid(self, sym, tt, o, pos):
+        max_layers = int(self.params.get('pyramid_max_layers',3))
+        add_pct    = float(self.params.get('pyramid_add_pct',0.01))
+        add_usdt   = float(self.params.get('pyramid_add_usdt',25))
+        layers = int(pos.get('layers',0))
+        last_add = float(pos.get('last_add_price', pos.get('entry',0)))
+        price=float(tt.get('last') or tt.get('close') or 0) or 0
+        if layers >= max_layers or price<=0: return
+        trigger = last_add * (1.0 + add_pct)
+        if price >= trigger and self._exposure_frac() < 0.95:
+            qty = add_usdt / price
+            pos['qty'] = float(pos.get('qty',0)) + qty
+            pos['layers'] = layers + 1
+            pos['last_add_price'] = price
+            LOG_write(f"PYRAMID {sym} +{qty:.6f} @ {price}")
+
+    def _route_buy(self, symbol,t,o):
+        price=float(t.get("last") or 0)
+        if price<=0: return
+        qty=10/price
+        sl=price*0.98; tp=price*1.04;
+        self.positions[symbol]={"status":"open","entry":price,"qty":qty,"sl":price*0.98,"tp":price*1.04,"trail_high":price,"trail":price*(1.0-self.params.get('trail_pct',0.03)),"layers":0,"last_add_price":price,"sl":sl,"tp":tp,"strats": buy_names,
+                                "ts":datetime.utcnow().isoformat(timespec="seconds")+"Z"}
+        LOG_write(f"BUY {symbol} qty={qty} @ {price}")
+
+    def _route_partial_sell(self, symbol, t, qty):
+        price=float(t.get('last') or t.get('close') or 0) or 0
+        pos=self.positions.get(symbol)
+        if not pos or price<=0: return
+        q=min(qty, pos.get('qty',0))
+        if q<=0: return
+        pnl=(price-pos['entry'])*q
+        self.pnl_total+=pnl
+        try:
+            from nova.engine import bandit
+            bandit.update_from_partial(symbol, pos.get('strats'), pnl, 0.25)
+        except Exception:
+            pass
+        pos['qty']=pos['qty']-q
+        LOG_write(f"SELL-PART {symbol} q={q:.6f} @ {price} pnl={pnl:.2f}")
+
+    def _route_sell(self, symbol,t):
+        price=float(t.get("last") or 0)
+        pos=self.positions.pop(symbol,None)
+        if not pos: return
+        pnl=(price-pos["entry"])*pos["qty"]
+        self.pnl_total+=pnl
+        try:
+            from nova.engine import bandit
+            bandit.update_from_trade(symbol, pos.get('strats'), pnl)
+        except Exception:
+            pass
+        LOG_write(f"SELL {symbol} qty={pos['qty']} @ {price} pnl={pnl:.2f}")
+
+    def _snapshot_equity(self, reason="interval"):
+        eqfile=Path("equity.json")
+        total=sum(p["entry"]*p["qty"] for p in self.positions.values())
+        total+=369.0  # stub USDT balance
+        arr=[]
+        if eqfile.exists():
+            arr=json.loads(eqfile.read_text())
+        arr.append({"ts":datetime.utcnow().isoformat(timespec="seconds")+"Z",
+                    "equity_usdt":round(total,6),
+                    "pnl_total":round(self.pnl_total,6),
+                    "reason":reason})
+        eqfile.write_text(json.dumps(arr,indent=2))
+
+def main():
+    cfg=dict(os.environ)
+    eng=Engine(cfg)
+    LOG_write("engine boot: %s / %s"%(cfg.get("EXCHANGE"),cfg.get("MODE")))
+    eng.loop()
+
+if __name__=="__main__":
+    main()

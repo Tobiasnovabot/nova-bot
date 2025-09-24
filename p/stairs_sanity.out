@@ -1,0 +1,11 @@
+{
+  "buys": 8,
+  "sells": 11,
+  "ladder_in": 8,
+  "ladder_out": 11,
+  "reentries": 1,
+  "end_equity": 10035.19,
+  "end_pos": 0.0,
+  "ok": true,
+  "reasons": []
+}

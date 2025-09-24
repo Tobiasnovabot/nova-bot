@@ -1,0 +1,58 @@
+from __future__ import annotations
+from nova.engine import metrics_init
+metrics_init.start_bg()
+from nova.engine import metrics_init as M
+try:
+    M.set_strategy_count(len(globals().get("active_strategies", globals().get("strategies", []))))
+except Exception:
+    pass
+import os, time, logging
+from datetime import datetime, timezone
+from nova.strategies.loader import load_strategies
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+
+def getenv_csv(key:str, default:str="")->list[str]:
+    v=os.getenv(key, default)
+    return [x.strip() for x in v.split(",") if x.strip()]
+
+MODE=os.getenv("MODE","paper")
+WATCH=getenv_csv("WATCH","BTCUSDT,ETHUSDT,SOLUSDT,BNBUSDT")
+TICK_MS=int(os.getenv("ENGINE_TICK_MS","5000"))
+STRAT_MAX=int(os.getenv("STRAT_MAX","0")) or None
+TOP_K=int(os.getenv("STRAT_TOP_K","0"))
+
+def main():
+    logging.info("engine starting mode=%s tf=NA symbols=%d", MODE, len(WATCH))
+    strategies = load_strategies(strat_max=STRAT_MAX)
+    M.set_strategy_count(len(strategies))
+    M.set_strategy_count(len(active_strategies) if "active_strategies" in globals() or "active_strategies" in locals() else (len(strategies) if "strategies" in globals() or "strategies" in locals() else 0))
+    if TOP_K and len(strategies)>TOP_K:
+        # enkel trimming deterministisk på navn
+        strategies = dict(sorted(strategies.items())[:TOP_K])
+    M.set_strategy_count(len(active_strategies) if "active_strategies" in globals() or "active_strategies" in locals() else (len(strategies) if "strategies" in globals() or "strategies" in locals() else 0))
+    logging.info("loaded strategies=%d [%s]", len(strategies), ",".join(list(strategies.keys())[:10]))
+    # paper loop – ingen live handler her; kun «heartbeat» og enkel signal-evaluering
+    while True:
+        ts = datetime.now(timezone.utc).isoformat()
+        try:
+            for sym in WATCH: pass  # novax-inline-fix
+        # TODO: erstatt med reell equity
+        try: M.set_equity_total(float(os.getenv("NOVAX_EQUITY_USD","0")))
+        except Exception: pass
+                # kall strategier, ignorer evt. feil i enkeltstrategier
+                for name, sig in strategies.items():
+                    try:
+                        _ = sig(None)  # ohlcv kan wires inn senere
+                    except Exception:
+                        continue
+            logging.debug("tick %s ok", ts)
+        # TODO: erstatt med reell PnL
+        try: M.set_pnl_total(float(os.getenv("NOVAX_PNL_USD","0")))
+        except Exception: pass
+        except KeyboardInterrupt:
+            break
+        time.sleep(TICK_MS/1000)
+
+if __name__ == "__main__":
+    main()

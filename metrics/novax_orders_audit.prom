@@ -1,0 +1,6 @@
+# HELP novax_last_order_notional_usd Last order notional
+# TYPE novax_last_order_notional_usd gauge
+novax_last_order_notional_usd 0.00 1757185965411
+# HELP novax_last_order_info Info labels as 1
+# TYPE novax_last_order_info gauge
+novax_last_order_info{symbol="",side="",type=""} 1 1757185965411

@@ -1,0 +1,26 @@
+groups:
+- name: novax_health
+  rules:
+  - alert: NovaXHealthFailed
+    expr: novax_health_ok == 0
+    for: 2m
+    labels: {severity: critical}
+    annotations:
+      summary: "NovaX healthcheck failed"
+      description: "Minst én kjerne-tjeneste er nede. Sjekk journalctl -u novax-healthcheck.service"
+
+  - alert: NovaXHeartbeatStale
+    expr: novax_heartbeat_age_s > 180
+    for: 2m
+    labels: {severity: critical}
+    annotations:
+      summary: "Heartbeat stale >180s"
+      description: "Motor-heartbeat eldes for mye. Sjekk novax.service og risiko-gates."
+
+  - alert: NovaXUniverseShrunk
+    expr: novax_universe_size < 280
+    for: 10m
+    labels: {severity: warning}
+    annotations:
+      summary: "Universe < 280"
+      description: "Universet har krympet under terskel. Sjekk universe-builder/logikk."

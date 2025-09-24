@@ -1,0 +1,16 @@
+[
+  {
+    "title":"Drawdown",
+    "type":"stat",
+    "targets":[{"expr":"novax_drawdown"}],
+    "options":{"reduceOptions":{"calcs":["lastNotNull"]},"colorMode":"value"},
+    "gridPos":{"x":0,"y":0,"w":6,"h":4}
+  },
+  {
+    "title":"Gross Exposure Ratio",
+    "type":"stat",
+    "targets":[{"expr":"novax_gross_exposure_ratio"}],
+    "options":{"reduceOptions":{"calcs":["lastNotNull"]}},
+    "gridPos":{"x":6,"y":0,"w":6,"h":4}
+  }
+]

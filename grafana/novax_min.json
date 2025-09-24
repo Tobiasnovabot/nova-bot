@@ -1,0 +1,43 @@
+{
+  "title": "NOVAX Dashboard",
+  "timezone": "browser",
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Equity",
+      "targets": [{"expr":"novax_equity_total"}],
+      "gridPos": {"x":0,"y":0,"w":12,"h":6}
+    },
+    {
+      "type": "timeseries",
+      "title": "PnL (cumulative) & Δ12h",
+      "targets": [{"expr":"novax_pnl_total"},{"expr":"increase(novax_pnl_total[12h])"}],
+      "gridPos": {"x":12,"y":0,"w":12,"h":6}
+    },
+    {
+      "type": "state-timeline",
+      "title": "Signals per strategy",
+      "targets": [{"expr":"novax_signal"}],
+      "options": {"rowHeight": 0.9},
+      "gridPos": {"x":0,"y":6,"w":24,"h":6}
+    },
+    {
+      "type": "table",
+      "title": "Positions & Prices",
+      "targets": [
+        {"expr":"novax_position_qty"},
+        {"expr":"novax_last_price"}
+      ],
+      "gridPos": {"x":0,"y":12,"w":12,"h":7}
+    },
+    {
+      "type": "stat",
+      "title": "Alerts firing",
+      "targets": [{"expr":"ALERTS{alertstate=\"firing\"}"}],
+      "gridPos": {"x":12,"y":12,"w":12,"h":7}
+    }
+  ],
+  "schemaVersion": 38,
+  "version": 1,
+  "refresh": "10s"
+}

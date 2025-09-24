@@ -1,0 +1,8 @@
+groups:
+- name: novax_activity
+  rules:
+  - alert: NovaXNoTrades12h
+    expr: increase(novax_trades_closed_total[12h]) < 1
+    for: 5m
+    labels: {severity: warning}
+    annotations: {summary: "No trades in last 12h"}

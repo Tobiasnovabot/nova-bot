@@ -1,0 +1,14 @@
+groups:
+- name: novax_positions
+  rules:
+  - alert: NovaXPosWideSpreadAvg
+    expr: novax_pos_spread_bps_avg > 100
+    for: 5m
+    labels: {severity: warning}
+    annotations: {summary: "Avg spread on open positions > 100 bps"}
+
+  - alert: NovaXPosWideSpreadAny
+    expr: max(novax_pos_spread_bps) by () > 200
+    for: 3m
+    labels: {severity: critical}
+    annotations: {summary: "At least one open position spread > 200 bps"}

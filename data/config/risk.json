@@ -1,0 +1,30 @@
+{
+  "base_risk_bps": 50,
+  "max_notional_bps": 2000,
+  "stop_frac_default": 0.01,
+  "daily_loss_limit_bps": 200,
+  "max_concurrent_positions": 5,
+  "drawdown_tiers": [
+    {
+      "dd": 0.05,
+      "mult": 1.0
+    },
+    {
+      "dd": 0.1,
+      "mult": 0.7
+    },
+    {
+      "dd": 0.2,
+      "mult": 0.5
+    },
+    {
+      "dd": 9.99,
+      "mult": 0.3
+    }
+  ],
+  "guard": {
+    "max_daily_loss_bps": 200,
+    "max_drawdown_bps": 2000,
+    "cooldown_minutes": 120
+  }
+}

@@ -1,0 +1,11 @@
+project: nova-bot
+roots:
+  module: "/home/nova/nova-bot/nova"
+  config: "/home/nova/nova-bot/config"
+  tests:  "/home/nova/nova-bot/tests"
+  docs:   "/home/nova/nova-bot/docs"
+markers:
+  router_register: "REGISTER_STRATEGIES"
+services:
+  restart_on_change:
+    - "nova-engine.service"

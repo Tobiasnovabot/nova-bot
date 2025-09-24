@@ -1,0 +1,17 @@
+# HELP novax_order_guard_total Total events by order notional guard.
+# TYPE novax_order_guard_total counter
+novax_order_guard_total{action="capped"} 1757013384562 1757013384593
+novax_order_guard_total{action="below_min"} 1757013384563 1757013384593
+novax_order_guard_total{action="breach_allowed"} 1757013384562 1757013384593
+# HELP novax_order_guard_last_notional Last seen order notional USD
+# TYPE novax_order_guard_last_notional gauge
+novax_order_guard_last_notional 5.00 1757013384593
+# HELP novax_order_guard_limits Current min/max USD limits
+# TYPE novax_order_guard_limits gauge
+novax_order_guard_limits{type="min"} 10.00 1757013384593
+novax_order_guard_limits{type="max"} 500.00 1757013384593
+# HELP novax_order_guard_last_action Last action as gauge label=1
+# TYPE novax_order_guard_last_action gauge
+novax_order_guard_last_action{action="capped"} 0 1757013384593
+novax_order_guard_last_action{action="below_min"} 1 1757013384593
+novax_order_guard_last_action{action="breach_allowed"} 0 1757013384593

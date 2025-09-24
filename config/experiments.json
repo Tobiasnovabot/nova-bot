@@ -1,0 +1,11 @@
+{
+  "presetA": {
+    "desc": "default experiment preset",
+    "risk_level": 3,
+    "params": {
+      "trail_pct": 0.0125,
+      "tf_min": 5,
+      "max_concurrent": 5
+    }
+  }
+}

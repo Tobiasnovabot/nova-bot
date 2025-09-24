@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -e
+: "${TELEGRAM_BOT_TOKEN:?mangler}"
+: "${1:?bruk: tg-bot-ping <CHAT_ID> [tekst...]}"
+CHAT_ID="$1"; shift || true
+TEXT="${*:-NovaX bot ping}"
+curl -fsS -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+  -d chat_id="$CHAT_ID" -d text="$TEXT" -d parse_mode=HTML | jq -r .ok

@@ -1,0 +1,18 @@
+groups:
+- name: novax_runtime
+  rules:
+  - alert: NovaxExporterDown
+    expr: max_over_time(up{job="novax_exporter"}[2m]) == 0
+    for: 2m
+    labels: { severity: critical }
+    annotations: { summary: "NovaX exporter er nede (>2m)" }
+  - alert: NovaxEngineLagHigh
+    expr: novax_engine_lag_seconds > 300
+    for: 10m
+    labels: { severity: warning }
+    annotations: { summary: "NovaX engine-lag høy (>{{ $value }}s)" }
+  - alert: NovaxBalanceLow
+    expr: novax_balance_available_usd < 100
+    for: 5m
+    labels: { severity: warning }
+    annotations: { summary: "Lav tilgjengelig balanse (<$100)" }

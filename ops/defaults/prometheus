@@ -1,0 +1,4 @@
+ARGS="--config.file=/etc/prometheus/prometheus.yml \
+      --storage.tsdb.path=/var/lib/prometheus \
+      --storage.tsdb.retention.time=30d \
+      --web.listen-address=:9090"

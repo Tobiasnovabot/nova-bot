@@ -1,0 +1,8 @@
+groups:
+- name: novax
+  rules:
+  - alert: NovaXNoHeartbeats
+    expr: absent_over_time(novax_engine_heartbeat_total[10m])
+    for: 10m
+    labels: { severity: warning }
+    annotations: { summary: "NovaX: ingen heartbeats i 10m" }

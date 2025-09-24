@@ -1,0 +1,37 @@
+# HELP novax_probe_api_ms Exchange API median latency ms
+# TYPE novax_probe_api_ms gauge
+novax_probe_api_ms 252.750 1757307461658
+# HELP novax_probe_ok_count Successful symbol probes
+# TYPE novax_probe_ok_count gauge
+novax_probe_ok_count 12 1757307461658
+# HELP novax_probe_err_count Failed symbol probes
+# TYPE novax_probe_err_count gauge
+novax_probe_err_count 0 1757307461658
+# HELP novax_spread_bps Best bid/ask spread in basis points
+# TYPE novax_spread_bps gauge
+novax_spread_bps{symbol="ETH/USDT"} 0.023277 1757307461658
+novax_spread_bps{symbol="BTC/USDT"} 0.000901 1757307461658
+novax_spread_bps{symbol="WLFI/USDT"} 4.691532 1757307461658
+novax_spread_bps{symbol="SOL/USDT"} 0.481244 1757307461658
+novax_spread_bps{symbol="DOGE/USDT"} 0.432330 1757307461658
+novax_spread_bps{symbol="USDC/USDT"} 1.000050 1757307461658
+novax_spread_bps{symbol="XRP/USDT"} 0.347421 1757307461658
+novax_spread_bps{symbol="SUI/USDT"} 0.295390 1757307461658
+novax_spread_bps{symbol="PEPE/USDT"} 10.025063 1757307461658
+novax_spread_bps{symbol="TRUMP/USDT"} 11.730205 1757307461658
+novax_spread_bps{symbol="LINK/USDT"} 4.451369 1757307461658
+novax_spread_bps{symbol="ADA/USDT"} 1.193389 1757307461658
+# HELP novax_orderbook_mid Mid price from orderbook best levels
+# TYPE novax_orderbook_mid gauge
+novax_orderbook_mid{symbol="ETH/USDT"} 4296.0450000000 1757307461658
+novax_orderbook_mid{symbol="BTC/USDT"} 110937.1950000000 1757307461658
+novax_orderbook_mid{symbol="WLFI/USDT"} 0.2131500000 1757307461658
+novax_orderbook_mid{symbol="SOL/USDT"} 207.7950000000 1757307461658
+novax_orderbook_mid{symbol="DOGE/USDT"} 0.2313050000 1757307461658
+novax_orderbook_mid{symbol="USDC/USDT"} 0.9999500000 1757307461658
+novax_orderbook_mid{symbol="XRP/USDT"} 2.8783500000 1757307461658
+novax_orderbook_mid{symbol="SUI/USDT"} 3.3853500000 1757307461658
+novax_orderbook_mid{symbol="PEPE/USDT"} 0.0000099750 1757307461658
+novax_orderbook_mid{symbol="TRUMP/USDT"} 8.5250000000 1757307461658
+novax_orderbook_mid{symbol="LINK/USDT"} 22.4650000000 1757307461658
+novax_orderbook_mid{symbol="ADA/USDT"} 0.8379500000 1757307461658

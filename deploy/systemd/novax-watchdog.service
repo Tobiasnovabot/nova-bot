@@ -1,0 +1,14 @@
+[Unit]
+Description=NovaX Watchdog
+After=network-online.target
+
+[Service]
+User=nova
+WorkingDirectory=${NOVA_HOME}
+EnvironmentFile=-${NOVA_HOME}/.env
+ExecStart=${NOVA_HOME}/.venv/bin/python -m novax.watchdog
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

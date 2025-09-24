@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -e
+: "${TELEGRAM_BOT_TOKEN:?mangler}"
+curl -fsS "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates" \
+| jq -r '.result[]?|.message?.chat? // .channel_post?.chat? | "\(.type)\t\(.title // (.first_name+" "+(.last_name//"")))\t\(.username // "-")\t\(.id)"' \
+| sort -u

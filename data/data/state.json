@@ -1,0 +1,24 @@
+{
+  "bandit": {},
+  "bot_enabled": false,
+  "day": "2025-09-03",
+  "loss_streak": {
+    "global": 0,
+    "per_sym": {}
+  },
+  "mode": "paper",
+  "params": {},
+  "pnl_day": 0.0,
+  "pnl_total": 0.0,
+  "positions": {},
+  "risk_level": 9,
+  "slippage_model": {
+    "bps": 2.0
+  },
+  "sym_score": {},
+  "trades_head": 0,
+  "universe_cache": {
+    "symbols": [],
+    "ts": 0
+  }
+}

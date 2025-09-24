@@ -1,0 +1,3 @@
+# HELP novax_liquidity_blocked Count blocked symbols
+# TYPE novax_liquidity_blocked gauge
+novax_liquidity_blocked 10 1757307518015

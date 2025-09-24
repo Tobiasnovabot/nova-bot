@@ -1,0 +1,8 @@
+{
+  "exchange": "binance",
+  "quote": "USDT",
+  "market_type": "spot",
+  "top_n": 300,
+  "min_quote_volume_usd": 100000,
+  "refresh_minutes": 15
+}

@@ -1,0 +1,12 @@
+{
+  "learn": {
+    "enabled": true
+  },
+  "risk": {
+    "presets": {
+      "5": {
+        "max_positions": 10
+      }
+    }
+  }
+}

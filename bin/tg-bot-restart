@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+$HOME/nova-bot/bin/tg-bot-stop >/dev/null 2>&1 || true
+exec $HOME/nova-bot/bin/tg-bot-start

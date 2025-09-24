@@ -1,0 +1,34 @@
+groups:
+- name: novax_kpi_extended
+  interval: 15s
+  rules:
+  - record: novax:winrate_1h
+    expr: |
+      sum by (strategy) (increase(novax_strategy_pnl_pos_total[1h]))
+      /
+      clamp_min(sum by (strategy) (increase(novax_strategy_trades_total[1h])), 1)
+
+  - record: novax:winrate_24h
+    expr: |
+      sum by (strategy) (increase(novax_strategy_pnl_pos_total[24h]))
+      /
+      clamp_min(sum by (strategy) (increase(novax_strategy_trades_total[24h])), 1)
+
+  - record: novax:return_1h
+    expr: sum by (strategy) (increase(novax_strategy_pnl_net_total[1h]))
+
+  - record: novax:return_24h
+    expr: sum by (strategy) (increase(novax_strategy_pnl_net_total[24h]))
+
+  # Sharpe proxy: mean/vol av per-trade pnl (krever novax_trade_pnl_gauge / event-sample)
+  - record: novax:sharpe_1h
+    expr: |
+      (avg_over_time(novax_trade_pnl_gauge[1h]))
+      /
+      clamp_min(stddev_over_time(novax_trade_pnl_gauge[1h]), 1e-9)
+
+  - record: novax:sharpe_24h
+    expr: |
+      (avg_over_time(novax_trade_pnl_gauge[24h]))
+      /
+      clamp_min(stddev_over_time(novax_trade_pnl_gauge[24h]), 1e-9)

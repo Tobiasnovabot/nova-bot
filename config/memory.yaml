@@ -1,0 +1,29 @@
+prefs:
+  timeframes:
+  - 5m
+  - 15m
+  - 1h
+  risk_level: medium
+strategies:
+- name: Strategy_SMA_1h
+  meta:
+    kind: sma
+    tf: 1h
+  ts: 1756835581
+- name: Strategy_SMA_15m
+  meta:
+    kind: sma
+    tf: 15m
+  ts: 1756835990
+- name: Strategy_SMA_5m
+  meta:
+    kind: sma
+    tf: 5m
+  ts: 1756836228
+notes:
+- ts: 1756835581
+  text: Generated 3 strategy candidates
+- ts: 1756835990
+  text: Ideated 2 strategies
+- ts: 1756836228
+  text: Ideated 1 strategies

@@ -1,0 +1,21 @@
+scrape_configs:
+  - job_name: 'novax'
+    static_configs:
+      - targets: ['127.0.0.1:9123']
+
+rule_files:
+  - "metrics/alerts/*.yml"
+
+  - job_name: 'novax_extra'
+    static_configs:
+      - targets: ['127.0.0.1:9108']
+    metrics_path: /extra
+
+  - job_name: 'novax_extra'
+    static_configs:
+      - targets: ['127.0.0.1:9108']
+    metrics_path: /extra
+
+  - job_name: 'novax_extra'
+    static_configs:
+      - targets: ['127.0.0.1:9109']

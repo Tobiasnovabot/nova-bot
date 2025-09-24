@@ -1,0 +1,56 @@
+===== NOVAX SNAPSHOT =====
+Host: nova-bot  Uptime: up 1 day, 16 hours, 28 minutes
+
+== SYSTEMD (aktive tjenester) ==
+  nova-engine.service              loaded active running Nova trading engine (loader)
+  novatg.service                   loaded active running NovaX Telegram controller
+  novax-risk-guard.service         loaded active running NovaX Risk Guard
+  novax-trade-alerts.service       loaded active running NovaX Trade Alerts to Telegram
+  novax.service                    loaded active running NovaX Engine
+
+== TIMERS ==
+Thu 2025-09-04 18:09:38 CEST          30s Thu 2025-09-04 18:06:38 CEST 2min 29s ago novax-failsafe.timer                             novax-failsafe.service
+Thu 2025-09-04 18:10:36 CEST     1min 29s Thu 2025-09-04 18:08:36 CEST      30s ago novax-exposure.timer                             novax-exposure.service
+Thu 2025-09-04 18:10:38 CEST     1min 30s Thu 2025-09-04 18:05:38 CEST 3min 29s ago novax-alerts.timer                               novax-alerts.service
+Thu 2025-09-04 18:11:08 CEST      2min 0s Thu 2025-09-04 18:06:08 CEST 2min 59s ago novax-recover.timer                              novax-recover.service
+Thu 2025-09-04 18:13:22 CEST     4min 15s Thu 2025-09-04 17:58:22 CEST    10min ago novax-universe-builder.timer                     novax-universe-builder.service
+Thu 2025-09-04 21:00:00 CEST     2h 50min Wed 2025-09-03 21:00:01 CEST      21h ago novax-equity.timer                               novax-equity.service
+Fri 2025-09-05 03:10:54 CEST           9h Thu 2025-09-04 03:10:28 CEST      14h ago novax-daily.timer                                novax-daily.service
+Fri 2025-09-05 03:15:03 CEST           9h Thu 2025-09-04 03:16:08 CEST      14h ago novax-snapshot.timer                             novax-snapshot.service
+Sun 2025-09-07 03:04:00 CEST       2 days Wed 2025-09-03 00:16:29 CEST            - novax-maintenance.timer                          novax-maintenance.service
+Sun 2025-09-07 21:16:11 CEST       3 days Wed 2025-09-03 00:18:34 CEST            - novax-weekly.timer                               novax-weekly.service
+
+== .env (sensurert) ==
+EXCHANGE=****
+MODE=****
+ENGINE_LOOP_SEC=****
+NOVA_HOME=****
+TOP_N=****
+WATCH_TOP_N=****
+TELEGRAM_BOT_TOKEN=****
+TELEGRAM_CHAT_ID=****
+
+== Risk Guard (systemd env) ==
+Environment=RISK_GUARD_MAX_DD_DAY_PCT=10.0
+
+== State / Equity ==
+bot_enabled= False mode= paper
+positions= 8 equity_usd= 4847.329179774862
+universe_cacheN= 232
+heartbeat_age_s= 2328
+equity_points= 22
+
+== Universe sample ==
+[
+  "ETH/USDT",
+  "BTC/USDT",
+  "WLFI/USDT",
+  "SOL/USDT",
+  "OKB/USDT",
+  "DOGE/USDT",
+  "USDC/USDT",
+  "PUMP/USDT",
+  "XRP/USDT",
+  "IP/USDT"
+]
+

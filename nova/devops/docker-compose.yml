@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  nova:
+    build: .
+    container_name: nova_engine
+    environment:
+      - NOVA_HOME=/tmp/nova_home/nova
+    volumes:
+      - ./data:/tmp/nova_home/nova/data
+      - ./logs:/tmp/nova_home/nova/logs
+    command: []

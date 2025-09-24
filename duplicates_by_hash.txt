@@ -1,0 +1,136 @@
+## ad40600ced69a2efcd556300fe7e84aadaf76cc65c19d6ba23951445323d4aca
+data/state.json
+state.json
+
+## 5339eac070fce7556dea6d20656deccdbae4ef15014e8eb0927b8ba7e8dbbd1c
+requirements-lock.txt
+requirements.txt
+
+## ea0eb3ecddb8548bd2dadfd08a58fc6a77990d4ef8b2c8f0f045bd0d4cbf6df1
+equity.json
+nova/data/equity.json
+nova/logs/equity.json
+nova/state/equity.json
+
+## e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+data/logs/_w
+data/logs/daily_2025-09-03.log
+data/logs/daily_2025-09-04.log
+data/logs/run.out
+data/risk_dd_guard.lock
+nova/logs/_w
+nova/logs/healthcheck.log
+v
+
+## 37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570
+nova/data/trades.json
+nova/logs/trades.json
+nova/state/trades.json
+nova/trades.json
+trades.json
+
+## c5c27c02b147ce54422249a3087e0aebe1d4be2dcba7a4b23edbcc4dfe6adc1f
+backup_20250903-0057/state.json
+backup_20250903-0100/state.json
+
+## 0cec28553bac460219ac8347400917971e08d5c4f15980bea9740375d6700873
+nova/__init__.py
+nova/slip_estimator/selftest.py
+
+## d7f22a868d2a4d67f7fe5600100eca13ac753594f8ac3dcb48bb217d23877650
+tests/test_sma_5m.py
+tests/test_sma_5m.py.bak.20250902-200353
+
+## de9277e6f4501402b7f79ce9f60b38a0375e5b2e7278a9494d4b642655fab3ac
+bin/nova_selftest.sh.bak.1756859525
+bin/nova_selftest.sh.bak.1756859601
+
+## 97407fe40fbeaa21a6e335d6d96660a51625ec79ac2199c4ba864a8b47b54ea2
+bin/nova_selftest.sh.bak.1756860182
+bin/nova_selftest.sh.bak.1756860359
+
+## e6448358ee4c7aa28570e81d4f3d16efca9119bd739b5e83baae520886d39128
+tools/extra_exporter.py
+tools/extra_exporter.py.bak.1757167799
+
+## abef5b6f54ecd8bf74c648edd3fd3f3044587f7f4539ad7eb283571b209914fb
+_data/tsdb/01K48WY60YJ1TB8TC3HB48KBEW/tombstones
+_data/tsdb/01K4ATQQ6M6HQJF52RFC1BEV6W/tombstones
+_data/tsdb/01K4CRH8F3HH3RQ53HAWQWZVCC/tombstones
+_data/tsdb/01K4EPANG4M10VJNKC7CC4HHFN/tombstones
+_data/tsdb/01K4FAXV29K8Q6PDZKZY233KDN/tombstones
+_data/tsdb/01K4FRN5GYJGB4NYDAJA5PARBK/tombstones
+_data/tsdb/01K4FZGWRXQ4XJFPC5CVXK6VNG/tombstones
+_data/tsdb/01K4FZGWVR7PSDWCDQT3C8ZW6K/tombstones
+_data/tsdb/01K4G6CMEEXXRZ8W71ETQ8AF2J/tombstones
+
+## f59f04d52b830f137acce5cdb9886b87c0678ecfac9c894e4680652a870da8cf
+data/data/keys.json
+data/data/keys.json.20250901-212017-390233.bak
+data/data/keys.json.20250901-212029-637781.bak
+data/data/keys.json.20250901-212746-505337.bak
+data/data/keys.json.20250901-213338-930614.bak
+data/data/keys.json.20250901-214236-942309.bak
+data/data/keys.json.20250901-214826-347205.bak
+data/data/keys.json.20250901-215332-243713.bak
+data/data/keys.json.20250902-005614-307067.bak
+data/data/keys.json.20250903-081930-995501.bak
+data/data/keys.json.20250903-083209-150536.bak
+
+## 44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a
+.pytest_cache/v/cache/lastfailed
+data/data/confirms.json
+
+## 9c69fa0a7c562174b3440fd160b7144fd0f2ef07d82f437086e5224c21432ca6
+data/data/keys.json.20250901-201047-254881.bak
+data/data/keys.json.20250901-212017-390797.bak
+data/data/keys.json.20250901-212029-638596.bak
+data/data/keys.json.20250901-212746-505972.bak
+data/data/keys.json.20250901-213338-931162.bak
+data/data/keys.json.20250901-214236-942910.bak
+data/data/keys.json.20250901-214826-347756.bak
+data/data/keys.json.20250901-215332-244382.bak
+data/data/keys.json.20250902-005614-307632.bak
+data/data/keys.json.20250903-081930-996122.bak
+data/data/keys.json.20250903-083209-151192.bak
+
+## 9c91e56831e0d98d0b2341dffab9d6d37bf8b95c6492363609724e12fa922132
+nova/logs/state.json
+nova/state/state.json
+
+## 6e2ded14b7dd930da74f05ae6a285e68e66b8d81e08d64d65e2720ce5f45a473
+nova/kill_switch/__init__.py
+nova/wf_trainer/__init__.py
+nova/whatif/__init__.py
+
+## a060d6819f4fc557d161b9928adc1894080bea310e9ea3b97f2f99ecdd5a4aed
+nova/strategies/sma_cross.py
+nova/strategies/sma_cross.py.bak.20250902-194252
+
+## 83cf0a070cfd34ae4922b71516e0a435ddc758997c3b3ad12ac47f258c4e8e66
+nova/strategies/sma_15m.py
+nova/strategies/sma_15m.py.bak.20250902-195953
+
+## f59667b43da704c459fd5a9f0d000523a20e6f33ba0938547bd3a3e97f473ea4
+nova/strategies/sma_5m.py
+nova/strategies/sma_5m.py.bak.20250902-195953
+nova/strategies/sma_5m.py.bak.20250902-200353
+
+## e086d57fcca4268189c3914d3eb80e7df4c76ce4af6e21c5413f293bd3336706
+nova/engine/run.py.bak.20250902-205350
+nova/engine/run.py.bak.20250902-205506
+nova/engine/run.py.bak.20250902-205517
+nova/engine/run.py.bak.20250902-205659
+nova/engine/run.py.bak.20250902-210211
+
+## 74d2d7283fa1fd1e27de1cae4de52088d506d1c49000e3806efffb18293874cd
+nova/engine/run.py.bak.20250902-200533
+nova/engine/run.py.bak.20250902-200618
+nova/engine/run.py.bak.20250902-200658
+nova/engine/run.py.bak.20250902-200848
+nova/engine/run.py.bak.20250902-201003
+
+## eec812ecfd05b97cd19fbdc4122bda92d562b2caccbb8047cfc661c005d27584
+config/demo_dir/params.json
+config/demo_dir/params_copy.json.bak.20250902-193902
+

@@ -1,0 +1,23 @@
+groups:
+- name: novax_entry
+  rules:
+  - record: novax_entry_blocks_5m
+    expr: sum by(action) (increase(novax_order_guard_total[5m]))
+
+  - alert: NovaXEntrySpreadBlocks
+    expr: increase(novax_order_guard_total{action="spread_block"}[10m]) > 10
+    for: 2m
+    labels: {severity: warning}
+    annotations: {summary: "Mange entry-blokkeringer pga spread > terskel siste 10m"}
+
+  - alert: NovaXEntryLiquidityBlocks
+    expr: increase(novax_order_guard_total{action="liquidity_block"}[10m]) > 5
+    for: 2m
+    labels: {severity: warning}
+    annotations: {summary: "Mange entry-blokkeringer pga liquidity gate siste 10m"}
+
+  - alert: NovaXEntryHoldActive
+    expr: novax_entry_hold == 1
+    for: 10m
+    labels: {severity: critical}
+    annotations: {summary: "Entry-hold aktiv i >10m (sjekk sizing/policy)"}

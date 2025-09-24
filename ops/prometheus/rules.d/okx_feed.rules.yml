@@ -1,0 +1,11 @@
+groups:
+- name: okx_feed_health
+  rules:
+  - alert: OkxFeedDown
+    expr: novax_feed_okx_up == 0
+    for: 5m
+    labels:
+      severity: critical
+    annotations:
+      summary: "OKX feed nede"
+      description: "novax_feed_okx_up=0 i over 5m – sjekk nett/OKX API og okx_exporter"

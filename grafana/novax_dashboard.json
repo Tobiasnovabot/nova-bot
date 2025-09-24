@@ -1,0 +1,40 @@
+{
+  "title": "NOVAX Trading",
+  "tags": ["novax"],
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "panels": [
+    { "type": "stat", "title": "Equity", "gridPos": {"x":0,"y":0,"w":6,"h":4},
+      "targets":[{"expr":"novax_equity_total"}],
+      "options":{"reduceOptions":{"calcs":["lastNotNull"]}} },
+    { "type": "stat", "title": "PnL Total", "gridPos": {"x":6,"y":0,"w":6,"h":4},
+      "targets":[{"expr":"novax_pnl_total"}],
+      "options":{"reduceOptions":{"calcs":["lastNotNull"]}} },
+    { "type": "timeseries", "title": "Equity over time", "gridPos": {"x":0,"y":4,"w":12,"h":8},
+      "targets":[{"expr":"novax_equity_total"}] },
+    { "type": "bargauge", "title": "Signals (total count)", "gridPos": {"x":0,"y":12,"w":6,"h":6},
+      "targets":[{"expr":"sum by (type) (novax_signal_total)"}] },
+    { "type": "table", "title": "Signals per strategy & symbol", "gridPos": {"x":6,"y":12,"w":6,"h":6},
+      "targets":[{"expr":"novax_signal"}],
+      "options":{"showHeader":true} },
+    { "type": "stat", "title": "Strategies Active", "gridPos": {"x":0,"y":18,"w":4,"h":4},
+      "targets":[{"expr":"novax_strategy_count"}],
+      "options":{"reduceOptions":{"calcs":["lastNotNull"]}} },
+    { "type": "table", "title": "Positions", "gridPos": {"x":4,"y":18,"w":8,"h":6},
+      "targets":[{"expr":"novax_position_qty"}],
+      "options":{"showHeader":true} },
+    { "type": "timeseries", "title": "Prices", "gridPos": {"x":0,"y":24,"w":12,"h":8},
+      "targets":[{"expr":"novax_last_price"}] },
+    { "type": "table", "title": "Strategy Scores (EMA)", "gridPos": {"x":0,"y":32,"w":12,"h":8},
+      "targets":[
+        {"expr":"topk(20, novax_strategy_score)"},
+        {"expr":"novax_strategy_ema_pnl"},
+        {"expr":"novax_strategy_update_count"}
+      ],
+      "options":{"showHeader":true} },
+    { "type": "table", "title": "Firing Alerts", "gridPos": {"x":0,"y":40,"w":12,"h":8},
+      "targets":[{"expr":"ALERTS{alertstate=\"firing\"}"}],
+      "options":{"showHeader":true} }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "trend":   ["trend_pullback", "momentum_rotation"],
+  "meanrev": ["range_reversion", "basis_meanrev", "pairs_stat_arb"],
+  "highvol": ["news_liq_reversion", "atr_breakout"],
+  "lowvol":  ["range_reversion", "pairs_stat_arb"]
+}

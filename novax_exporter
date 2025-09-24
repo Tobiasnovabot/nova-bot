@@ -1,0 +1,8 @@
+# Erstatt heartbeat-regelen midlertidig:
+- alert: NOVAX_Heartbeat_Stall
+  expr: increase(scrape_samples_scraped{job="novax_exporter"}[5m]) == 0
+  for: 3m
+  labels: { severity: warning, system: novax }
+  annotations:
+    summary: "Dataflyt fra novax_exporter har stoppet"
+    description: "Ingen nye samples skrapet fra novax_exporter siste 5–8 min."
