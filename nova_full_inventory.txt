@@ -1,0 +1,446 @@
+===== SYSTEMD SERVICES =====
+nova-engine.service                                enabled         enabled
+nova-telegram.service                              disabled        enabled
+novatg-old.service                                 masked          enabled
+novatg.service                                     enabled         enabled
+novax-alertbridge.service                          disabled        enabled
+novax-alerts.service                               disabled        enabled
+novax-daily.service                                static          -
+novax-engine-watchdog.service                      static          -
+novax-equity.service                               static          -
+novax-event-tap.service                            enabled         enabled
+novax-exposure.service                             static          -
+novax-failsafe.service                             static          -
+novax-maintenance.service                          static          -
+novax-metrics.service                              enabled         enabled
+novax-notify@.service                              static          -
+novax-recover.service                              static          -
+novax-risk-guard.service                           enabled         enabled
+novax-snapshot.service                             static          -
+novax-status.service                               static          -
+novax-tg-watchdog.service                          static          -
+novax-tg.service                                   disabled        enabled
+novax-trade-alerts.service                         enabled         enabled
+novax-universe-builder.service                     static          -
+novax-watchdog.service                             disabled        enabled
+novax-weekly.service                               static          -
+novax.service                                      enabled         enabled
+novax-alerts.timer                                 enabled         enabled
+novax-daily.timer                                  enabled         enabled
+novax-engine-watchdog.timer                        disabled        enabled
+novax-equity.timer                                 enabled         enabled
+novax-exposure.timer                               enabled         enabled
+novax-failsafe.timer                               enabled         enabled
+novax-maintenance.timer                            enabled         enabled
+novax-recover.timer                                enabled         enabled
+novax-snapshot.timer                               enabled         enabled
+novax-status.timer                                 disabled        enabled
+novax-tg-watchdog.timer                            disabled        enabled
+novax-universe-builder.timer                       enabled         enabled
+novax-watchdog.timer                               disabled        enabled
+novax-weekly.timer                                 enabled         enabled
+
+===== ACTIVE SERVICES =====
+  nova-engine.service              loaded active running Nova trading engine (loader)
+  novatg.service                   loaded active running NovaX Telegram controller
+  novax-risk-guard.service         loaded active running NovaX Risk Guard
+  novax-trade-alerts.service       loaded active running NovaX Trade Alerts to Telegram
+  novax.service                    loaded active running NovaX Engine
+
+===== TREE (hovedmapper) =====
+.
+├── actions.py
+├── alertbridge
+│   └── novax_alertbridge.py
+├── alertmanager.yml
+├── alerts
+│   ├── alerts_healthcheck.sh
+│   ├── novax_alerts.py
+│   └── trade_to_tg.sh
+├── approvals.py
+├── backup_20250903-0046
+│   ├── .env
+│   ├── equity.json
+│   └── state.json
+├── backup_20250903-0057
+│   ├── .env
+│   └── state.json
+├── backup_20250903-0100
+│   ├── .env
+│   └── state.json
+├── backups
+│   ├── env.20250904-172649.bak
+│   ├── env.20250904-172908.bak
+│   ├── nova-bot_20250901_230037.tar.gz
+│   ├── nova-bot_20250901_231956.tar.gz
+│   ├── nova-bot_20250901_232022.tar.gz
+│   ├── nova-bot_20250901_232724.tar.gz
+│   ├── nova-bot_20250901_233320.tar.gz
+│   ├── nova-bot_20250901_234216.tar.gz
+│   ├── nova-bot_20250901_234806.tar.gz
+│   ├── nova-bot_20250901_235313.tar.gz
+│   ├── nova-bot_20250902_025123.tar.gz
+│   ├── nova-bot_20250902_025555.tar.gz
+│   ├── nova-bot_20250903_015753.tar.gz
+│   ├── nova-bot_20250903_015919.tar.gz
+│   ├── nova-bot_20250903_022557.tar.gz
+│   ├── nova-bot_20250903_022612.tar.gz
+│   ├── nova-bot_20250903_022744.tar.gz
+│   ├── nova-bot_20250903_101912.tar.gz
+│   ├── nova-bot_20250903_103151.tar.gz
+│   ├── nova-data-20250903-003155.tar.gz
+│   ├── nova-data-20250903-031521.tar.gz
+│   ├── nova-data-20250904-031608.tar.gz
+│   ├── novax-20250903-020314.tar.gz
+│   ├── risk_guard.py.20250904-141753.bak
+│   ├── risk_guard.py.20250904-160841.bak
+│   └── run.py.20250903-002129.bak
+├── bin
+│   ├── alerts_show.sh
+│   ├── alerts_silence_15m.sh
+│   ├── alerts_test_now.sh
+│   ├── alerts_test_off.sh
+│   ├── alerts_unsilence_all.sh
+│   ├── am-user-start.sh
+│   ├── am-user-status.sh
+│   ├── am-user-stop.sh
+│   ├── failsafe_guard.sh
+│   ├── nova_deep_selfcheck.py
+│   ├── nova_engine.py
+│   ├── nova_login_check.sh
+│   ├── nova_metrics_exporter.py
+│   ├── nova_quick_health.sh
+│   ├── nova_selftest.sh
+│   ├── nova_selftest.sh.bak.1756857140
+│   ├── nova_selftest.sh.bak.1756859435
+│   ├── nova_selftest.sh.bak.1756859521
+│   ├── nova_selftest.sh.bak.1756859525
+│   ├── nova_selftest.sh.bak.1756859601
+│   ├── nova_selftest.sh.bak.1756860182
+│   ├── nova_selftest.sh.bak.1756860359
+│   ├── nova_selftest.sh.bak.1756865859
+│   ├── nova_tree_audit.py
+│   ├── novax_exporter.py
+│   ├── novax_send_menu.sh
+│   ├── novax_status_push.sh
+│   ├── novax_status.sh
+│   ├── obs_snapshot.sh
+│   ├── obs_validate.sh
+│   ├── prom-user-start.sh
+│   ├── prom-user-status.sh
+│   ├── prom-user-stop.sh
+│   ├── __pycache__
+│   ├── tg-bot-logs
+│   ├── tg-bot-ping
+│   ├── tg-bot-restart
+│   ├── tg-bot-start
+│   ├── tg-bot-status
+│   ├── tg-bot-stop
+│   ├── tg-chat-id
+│   └── tg-webhook-clear
+├── boost_learning.sh
+├── bootstrap_all.sh
+├── bot_main_dummy.py
+├── bot_main.py
+├── config
+│   ├── demo_dir
+│   ├── memory.yaml
+│   ├── params.json
+│   ├── perf.json
+│   └── risk_levels.json
+├── _data
+│   └── tsdb
+├── data
+│   ├── alerts
+│   ├── alerts_state.json
+│   ├── alerts_status.json
+│   ├── audit_report.txt
+│   ├── backups
+│   ├── config
+│   ├── data
+│   ├── equity.json
+│   ├── equity.png
+│   ├── exposure_state.json
+│   ├── failsafe_state.json
+│   ├── learning
+│   ├── log
+│   ├── logs
+│   ├── nova.lock
+│   ├── recover_state.json
+│   ├── signal_selftest.json
+│   ├── state.json
+│   ├── trades.json
+│   └── watchdog_state.json
+├── diff.py
+├── docker-compose.yml
+├── Dockerfile
+├── .env
+├── .env.systemd
+├── equity.json
+├── etc
+│   └── systemd
+├── event_bus_health.sh
+├── fs_safety.py
+├── .git
+│   ├── branches
+│   ├── COMMIT_EDITMSG
+│   ├── config
+│   ├── description
+│   ├── HEAD
+│   ├── hooks
+│   ├── index
+│   ├── info
+│   ├── logs
+│   ├── objects
+│   └── refs
+├── grafana
+│   └── novax-overview.json
+├── guardian.manifest.yaml
+├── guardian.py
+├── health_check.sh
+├── install_event_bus.sh
+├── install_risk_guard.sh
+├── install_risk_module.sh
+├── install_universe_builder.sh
+├── logrotate.sample
+├── logs
+│   ├── alerts.log
+│   ├── audit.jsonl
+│   ├── bot.out
+│   └── refresh_watch.log
+├── metrics
+│   ├── exporter_novax.py
+│   ├── novax_exporter.py
+│   └── novax_rules.yml
+├── mode_train.sh
+├── nova
+│   ├── alerts
+│   ├── analysis_quant
+│   ├── anomaly_guard
+│   ├── audit_log
+│   ├── auto_param_tuner
+│   ├── backtest_sim
+│   ├── backup
+│   ├── backups
+│   ├── bandit
+│   ├── bot_intel
+│   ├── capital_allocator
+│   ├── cleanup_refactor
+│   ├── config
+│   ├── config_reload
+│   ├── confirm_gate
+│   ├── core_boot
+│   ├── cost_capital
+│   ├── data
+│   ├── dev
+│   ├── devops
+│   ├── engine
+│   ├── equity_sync
+│   ├── exchange
+│   ├── exits
+│   ├── guards
+│   ├── hedge_engine
+│   ├── indicators
+│   ├── __init__.py
+│   ├── kill_switch
+│   ├── learning
+│   ├── lockguard
+│   ├── logrotate_cfg
+│   ├── logs
+│   ├── microstructure
+│   ├── monitor
+│   ├── mtf_signals
+│   ├── notify.py
+│   ├── observer
+│   ├── orders
+│   ├── perps_derivs
+│   ├── pnl_costs
+│   ├── portfolio_multiasset
+│   ├── portfolio_risk
+│   ├── profit_tricks
+│   ├── __pycache__
+│   ├── qa
+│   ├── quality_obs
+│   ├── redundancy
+│   ├── regime
+│   ├── risk
+│   ├── robustness
+│   ├── scaling_dist
+│   ├── security_compliance
+│   ├── selfcheck
+│   ├── sentiment_guard
+│   ├── service_boot
+│   ├── signal_learning
+│   ├── signals
+│   ├── slip_estimator
+│   ├── state
+│   ├── stateio
+│   ├── strategies
+│   ├── telegram
+│   ├── telegram_ctl
+│   ├── telemetry
+│   ├── tools
+│   ├── trades.json
+│   ├── universe
+│   ├── util
+│   ├── ux_ops
+│   ├── vip_fee_manager
+│   ├── wf_trainer
+│   └── whatif
+├── nova_alerts.sh
+├── nova_exposure_guard.sh
+├── nova_failsafe_selftest.sh
+├── nova_failsafe.sh
+├── nova_fullcheck.sh
+├── nova_full_inventory.txt
+├── nova-golden-2025-09-02.tar.gz
+├── nova_healthcheck.sh
+├── nova_metrics_healthcheck.sh
+├── nova_recover.sh
+├── nova_refresh_watch.sh
+├── nova_sizing_selftest.sh
+├── nova_watchdog.py
+├── novax_daily.sh
+├── novax_exporter
+├── novax_maintenance.sh
+├── novax_watchdog.py
+├── novax_weekly_report.py
+├── novax_weekly.sh
+├── ops
+│   ├── alertmanager
+│   ├── auto_update.sh
+│   ├── backup_now.sh
+│   ├── backup.sh
+│   ├── defaults
+│   ├── health_restore_check.sh
+│   ├── lib.sh
+│   ├── live_scan.sh
+│   ├── metrics.sh
+│   ├── prometheus
+│   ├── rebuild_universe_spot.py
+│   ├── restore_from.sh
+│   ├── restore_latest.sh
+│   ├── run_signal_selftest.sh
+│   ├── signal_selftest.py
+│   ├── tg_fix_409.sh
+│   ├── uninstall.sh
+│   └── watchdog.sh
+├── p
+├── prometheus.yml
+├── __pycache__
+│   ├── actions.cpython-312.pyc
+│   ├── approvals.cpython-312.pyc
+│   ├── bot_main.cpython-312.pyc
+│   ├── bot_main_dummy.cpython-312.pyc
+│   ├── diff.cpython-312.pyc
+│   ├── fs_safety.cpython-312.pyc
+│   ├── guardian.cpython-312.pyc
+│   ├── run_wrapper.cpython-312.pyc
+│   └── validators.cpython-312.pyc
+├── .pytest_cache
+│   ├── CACHEDIR.TAG
+│   ├── .gitignore
+│   ├── README.md
+│   └── v
+├── rebuild_telegram.sh
+├── requirements-lock.txt
+├── requirements.txt
+├── risk_guard_health.sh
+├── run_wrapper.py
+├── scripts
+├── selfcheck_auto_usdt.sh
+├── setup_auto_usdt_spot.sh
+├── spec_schema.yaml
+├── state.json
+├── switch_to_swap.sh
+├── tests
+│   ├── __pycache__
+│   ├── test_rsi2.py
+│   ├── test_sma_15m.py
+│   ├── test_sma_5m.py
+│   └── test_sma_5m.py.bak.20250902-200353
+├── tools
+│   ├── _audit
+│   ├── audit_fill_placeholders.sh
+│   ├── engine_watchdog.sh
+│   ├── equity_snapshot.py
+│   ├── heartbeat_watchdog.py
+│   ├── nova_backup.sh
+│   ├── nova_snapshot.sh
+│   ├── nova_universe_refresh.py
+│   ├── nova_watchdog.sh
+│   ├── tg_watchdog.sh
+│   └── universe_notify.sh
+├── trades.json
+├── universe_health.sh
+├── v
+├── validators.py
+└── .venv
+    ├── bin
+    ├── include
+    ├── lib
+    ├── lib64 -> lib
+    ├── pyvenv.cfg
+    └── share
+
+123 directories, 211 files
+
+===== CONFIG (.env + overrides) =====
+EXCHANGE=okx
+MODE=paper                 # bytt til live når du er klar
+ENGINE_LOOP_SEC=5
+NOVA_HOME=/home/nova/nova-bot/data
+TOP_N=300
+WATCH_TOP_N=300
+
+
+TELEGRAM_CHAT_ID=6958857057
+
+===== HEALTH SCRIPTS =====
+boost_learning.sh
+bootstrap_all.sh
+event_bus_health.sh
+health_check.sh
+install_event_bus.sh
+install_risk_guard.sh
+install_risk_module.sh
+install_universe_builder.sh
+mode_train.sh
+nova_alerts.sh
+nova_exposure_guard.sh
+nova_failsafe_selftest.sh
+nova_failsafe.sh
+nova_fullcheck.sh
+nova_healthcheck.sh
+nova_metrics_healthcheck.sh
+nova_recover.sh
+nova_refresh_watch.sh
+nova_sizing_selftest.sh
+novax_daily.sh
+novax_maintenance.sh
+novax_weekly.sh
+rebuild_telegram.sh
+risk_guard_health.sh
+risk_guard_health.sh
+selfcheck_auto_usdt.sh
+selfcheck_auto_usdt.sh
+setup_auto_usdt_spot.sh
+switch_to_swap.sh
+universe_health.sh
+
+===== ALERTS =====
+alerts_healthcheck.sh
+novax_alerts.py
+trade_to_tg.sh
+
+===== RISK MODULE =====
+canary.py
+__init__.py
+kelly.py
+position_sizing.py
+__pycache__
+risk_guard.py
+risk.py
+risk_rules.py
+selftest.py
+vol_target.py

@@ -1,0 +1,18 @@
+[Unit]
+Description=NovaX engine
+After=network-online.target novax-universe-builder.service
+Wants=network-online.target
+
+[Service]
+User=nova
+WorkingDirectory=${NOVA_HOME}
+EnvironmentFile=${NOVA_HOME}/.env
+ExecStart=${NOVA_HOME}/.venv/bin/python -u -m nova.engine.run
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target

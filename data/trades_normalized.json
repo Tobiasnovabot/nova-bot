@@ -1,0 +1,15 @@
+[
+  {
+    "strategy": null,
+    "symbol": "ETH/USDT",
+    "side": null,
+    "qty": 0.0,
+    "price_exec": 0.0,
+    "ts_open": null,
+    "ts_close": null,
+    "pnl_usd": 0.0,
+    "fees_usd": 0.0,
+    "exchange": null,
+    "order_id": null
+  }
+]

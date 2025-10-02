@@ -1,0 +1,13 @@
+{"ts": "2025-09-01T21:32:05.186886+02:00", "expected_edge_bps": 35.0, "realized_cost_bps": 18.0, "hit_rate": 0.55, "hold_time_min": 42.0, "alpha_decay_min": 15.0}
+{"ts": "2025-09-01T21:32:23.206064+02:00", "expected_edge_bps": 35.0, "realized_cost_bps": 18.0, "hit_rate": 0.55, "hold_time_min": 42.0, "alpha_decay_min": 15.0}
+{"ts": "2025-09-01T22:10:47.539660+02:00", "expected_edge_bps": 35.0, "realized_cost_bps": 18.0, "hit_rate": 0.55, "hold_time_min": 42.0, "alpha_decay_min": 15.0}
+{"ts": "2025-09-01T23:20:12.821339+02:00", "expected_edge_bps": 35.0, "realized_cost_bps": 18.0, "hit_rate": 0.55, "hold_time_min": 42.0, "alpha_decay_min": 15.0}
+{"ts": "2025-09-01T23:20:25.215427+02:00", "expected_edge_bps": 35.0, "realized_cost_bps": 18.0, "hit_rate": 0.55, "hold_time_min": 42.0, "alpha_decay_min": 15.0}
+{"ts": "2025-09-01T23:27:42.026999+02:00", "expected_edge_bps": 35.0, "realized_cost_bps": 18.0, "hit_rate": 0.55, "hold_time_min": 42.0, "alpha_decay_min": 15.0}
+{"ts": "2025-09-01T23:33:34.537892+02:00", "expected_edge_bps": 35.0, "realized_cost_bps": 18.0, "hit_rate": 0.55, "hold_time_min": 42.0, "alpha_decay_min": 15.0}
+{"ts": "2025-09-01T23:42:32.304404+02:00", "expected_edge_bps": 35.0, "realized_cost_bps": 18.0, "hit_rate": 0.55, "hold_time_min": 42.0, "alpha_decay_min": 15.0}
+{"ts": "2025-09-01T23:48:21.987839+02:00", "expected_edge_bps": 35.0, "realized_cost_bps": 18.0, "hit_rate": 0.55, "hold_time_min": 42.0, "alpha_decay_min": 15.0}
+{"ts": "2025-09-01T23:53:27.851919+02:00", "expected_edge_bps": 35.0, "realized_cost_bps": 18.0, "hit_rate": 0.55, "hold_time_min": 42.0, "alpha_decay_min": 15.0}
+{"ts": "2025-09-02T02:56:09.700151+02:00", "expected_edge_bps": 35.0, "realized_cost_bps": 18.0, "hit_rate": 0.55, "hold_time_min": 42.0, "alpha_decay_min": 15.0}
+{"ts": "2025-09-03T10:19:26.311000+02:00", "expected_edge_bps": 35.0, "realized_cost_bps": 18.0, "hit_rate": 0.55, "hold_time_min": 42.0, "alpha_decay_min": 15.0}
+{"ts": "2025-09-03T10:32:04.331577+02:00", "expected_edge_bps": 35.0, "realized_cost_bps": 18.0, "hit_rate": 0.55, "hold_time_min": 42.0, "alpha_decay_min": 15.0}

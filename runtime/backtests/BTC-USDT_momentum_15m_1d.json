@@ -1,0 +1,10 @@
+{
+  "equity_start": 1000.0,
+  "equity_end": 1000.0,
+  "realized": 0.0,
+  "trades": 0,
+  "winrate": 0.0,
+  "max_dd": 0.0,
+  "ret": 0.0,
+  "sharpe": 0.0
+}

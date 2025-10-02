@@ -1,0 +1,3 @@
+# HELP novax_health_ok 1 if all services healthy
+# TYPE novax_health_ok gauge
+novax_health_ok 0 1757354175000

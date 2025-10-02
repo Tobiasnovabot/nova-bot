@@ -1,0 +1,13 @@
+groups:
+- name: novax-ultra-alerts
+  rules:
+  - alert: UltraNoTrades10m
+    expr: increase(novax_ultra_trades_total[10m]) == 0
+    for: 10m
+    labels: {severity: warning}
+    annotations: {summary: "Ingen trades siste 10m"}
+  - alert: UltraUniverseZero
+    expr: novax_ultra_universe_size == 0
+    for: 2m
+    labels: {severity: critical}
+    annotations: {summary: "Universe=0"}

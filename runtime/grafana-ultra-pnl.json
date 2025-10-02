@@ -1,0 +1,51 @@
+{
+  "title": "NOVAX Ultra – Paper PnL",
+  "timezone": "browser",
+  "time": { "from": "now-7d", "to": "now" },
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Equity (USDT)",
+      "gridPos": { "x": 0, "y": 0, "w": 24, "h": 8 },
+      "targets": [{ "expr": "novax_ultra_equity", "legendFormat": "equity" }]
+    },
+    {
+      "type": "stat",
+      "title": "PnL i dag (USDT)",
+      "gridPos": { "x": 0, "y": 8, "w": 6, "h": 4 },
+      "targets": [{ "expr": "novax_ultra:pnl_1d" }]
+    },
+    {
+      "type": "stat",
+      "title": "PnL siste 30d (USDT)",
+      "gridPos": { "x": 6, "y": 8, "w": 6, "h": 4 },
+      "targets": [{ "expr": "novax_ultra:pnl_30d" }]
+    },
+    {
+      "type": "stat",
+      "title": "PnL (absolutt) vs 1000",
+      "gridPos": { "x": 12, "y": 8, "w": 6, "h": 4 },
+      "targets": [{ "expr": "novax_ultra:pnl_abs" }]
+    },
+    {
+      "type": "stat",
+      "title": "Trades siste 24t",
+      "gridPos": { "x": 18, "y": 8, "w": 6, "h": 4 },
+      "targets": [{ "expr": "novax_ultra:trades_1d" }]
+    },
+    {
+      "type": "timeseries",
+      "title": "Signals / dag",
+      "gridPos": { "x": 0, "y": 12, "w": 12, "h": 6 },
+      "targets": [{ "expr": "novax_ultra:signals_1d", "legendFormat": "signals/day" }]
+    },
+    {
+      "type": "timeseries",
+      "title": "Trades / dag",
+      "gridPos": { "x": 12, "y": 12, "w": 12, "h": 6 },
+      "targets": [{ "expr": "novax_ultra:trades_1d", "legendFormat": "trades/day" }]
+    }
+  ],
+  "schemaVersion": 39,
+  "version": 1
+}

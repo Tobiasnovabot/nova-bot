@@ -1,0 +1,11 @@
+groups:
+- name: novax_order_guard
+  rules:
+  - record: novax_order_guard_blocked_5m
+    expr: increase(novax_order_guard_total{action=~"below_min|capped"}[5m])
+  - alert: NovaXOrderGuardManyBlocks
+    expr: novax_order_guard_blocked_5m >= 3
+    for: 2m
+    labels: {severity: warning}
+    annotations:
+      summary: "Order guard blocked or capped >=3 times in 5m"

@@ -1,0 +1,19 @@
+{
+  "total_score": -0.05680306634691711,
+  "last_overrides": {
+    "risk_frac": 0.01,
+    "strategies": {
+      "unknown": {
+        "enabled": true,
+        "weight": 1.0
+      }
+    },
+    "enable_pairs": {
+      "ZEN/USDC": true,
+      "XRP/USDC": true,
+      "FORM/USDC": true
+    },
+    "disable_pairs": {},
+    "daily_dd_limit": 0.12
+  }
+}

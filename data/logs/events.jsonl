@@ -1,0 +1,280 @@
+{"ts":1756852430.8599782,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852431.1437569,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852436.3601904,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852436.6509197,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852441.761045,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852442.1611755,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852447.3209064,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852447.6035273,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852452.6100113,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852452.9506834,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852458.3598764,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852458.6719847,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852463.838787,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852464.1223931,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852469.360162,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852469.6692023,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852474.860013,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852475.16718,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852480.3600404,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852480.6233425,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852485.6099758,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852485.9543202,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852491.3600047,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852491.6477044,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852496.8600128,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852497.2525766,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852502.3599384,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852502.6282282,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852507.8598847,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852508.145059,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852513.359981,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852513.6931365,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852518.8601227,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852519.1686876,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852524.35994,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852524.6352465,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852529.7557921,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852530.0442252,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852535.3600047,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852535.658945,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852540.860027,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852541.202449,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852546.070925,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852546.3944302,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852551.7904549,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852552.1270585,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852557.3601184,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852557.6838708,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852562.8601077,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852563.173974,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852568.3600564,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852568.6496654,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852573.8600404,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852574.1703348,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852579.360077,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852579.675916,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852584.8599603,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852585.1326168,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852590.0424984,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852590.360345,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852595.8284793,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852596.114931,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852601.3599012,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852601.6484482,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852606.6100225,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852606.8962824,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852612.359925,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852612.6305373,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852617.8599699,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852618.1398087,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852623.359957,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852623.6462138,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852628.6359656,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852628.9416595,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852634.360003,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852634.661037,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852639.8601854,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852640.2215583,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852645.2785087,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852645.548043,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852651.0099225,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852651.3251905,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852656.4797437,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852656.7358418,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852661.6830747,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852661.953664,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852667.2725632,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852667.5481057,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852672.7290382,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852673.014327,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852678.6101978,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852678.882557,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852684.1099489,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852684.4114318,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852689.609912,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852689.9931881,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852695.1101274,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852695.408098,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852700.609958,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852700.8957188,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852706.1101317,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852706.4005578,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852711.6102104,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852711.9611666,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852717.110083,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852717.3892047,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852722.6102552,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852723.001986,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852728.1102002,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852728.396225,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852733.4869523,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852733.7668595,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852739.1101277,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852739.4172485,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852744.2629502,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852744.6405735,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852750.1100132,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852750.4122326,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852755.6099868,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852755.8950472,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852761.1099555,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852761.5008187,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852766.6101878,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852766.9745164,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852772.1101024,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852772.404845,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852777.2340324,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852777.6100845,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852783.1101947,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852783.4111717,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852788.3319967,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852788.6175008,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852794.1100276,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852794.3973105,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852799.6100318,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852799.9041173,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852804.9849048,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852805.2939749,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852810.6101403,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852810.9080064,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852816.1100442,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852816.417133,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852821.6099298,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852821.9042659,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852827.1099598,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852827.396878,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852832.61009,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852832.9102726,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852838.1101792,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852838.3817804,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852843.609963,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852843.9045894,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852849.1099179,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852849.3983347,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852854.6100147,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852854.8855975,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852860.110049,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852860.422191,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852865.6100569,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852865.902696,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852871.109945,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852871.379951,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852876.6100624,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852876.879186,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852882.1100607,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852882.3897936,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852887.610067,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852887.9341223,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852893.1058557,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852893.4582186,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852898.6099854,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852898.9426165,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852904.1099622,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852904.445245,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852909.3599393,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852909.6299098,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852914.734638,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852915.0086067,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852920.6099453,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852920.9107578,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852926.110107,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852926.4456215,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852931.6100345,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852931.8755047,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852937.1099646,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852937.3900378,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852942.6100597,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852942.8867097,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852948.1101146,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852948.4200583,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852953.61013,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852953.8738146,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852959.1101098,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852959.4137805,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852964.6100986,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852964.9060426,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852970.109959,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852970.3935711,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852975.6100955,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852975.9307406,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852981.109956,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852981.398558,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852986.6100934,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852986.8780918,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852992.1099818,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852992.4470866,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756852997.6102011,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756852997.9176326,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853003.1100087,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853003.3939161,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853008.6100378,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853008.917135,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853014.109997,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853014.4709952,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853019.6100466,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853019.9055393,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853025.1101344,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853025.4014235,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853030.2962642,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853030.5717087,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853036.1101692,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853036.416494,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853041.610022,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853041.9907937,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853047.10997,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853047.3949523,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853052.610074,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853052.8809917,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853057.7205596,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853058.0109868,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853063.6100566,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853063.8998723,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853069.109921,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853069.3785388,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853074.609942,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853074.885816,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853076.8599825,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853077.1399047,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853082.6099687,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853082.9201658,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853088.1101484,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853088.3876503,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853093.6102364,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853093.9041824,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853099.109983,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853099.392131,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853104.6101508,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853104.9090264,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853110.110012,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853110.4221961,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853115.6100767,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853115.8988206,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853121.1100235,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853121.379461,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853126.609991,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853126.890337,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853132.1101148,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853132.4572592,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853137.609989,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853137.9086862,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853143.1099648,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853143.3928897,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853148.609948,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853148.8870633,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853154.1100552,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853154.4628205,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853159.6100726,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853159.8851683,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853165.1101935,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853165.4273932,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853170.6100774,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853170.902499,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853176.1101656,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853176.3948596,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853181.6100483,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853181.917638,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853187.1100798,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853187.4072666,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}
+{"ts":1756853192.610081,"type":"error","msg":"Traceback (most recent call last):"}
+{"ts":1756853192.8895197,"type":"error","msg":"ImportError: cannot import name 'main' from 'nova.engine.run' (/home/nova/nova-bot/nova/engine/run.py)"}

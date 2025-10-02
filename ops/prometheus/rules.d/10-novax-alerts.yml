@@ -1,0 +1,38 @@
+groups:
+- name: novax
+  rules:
+  # 1) Heartbeat stall: ingen inkrement siste 3m
+  - alert: NOVAX_Heartbeat_Stall
+    expr: max by () (increase(novax_engine_heartbeat_total[3m])) == 0
+    for: 1m
+    labels: {severity: warning, system: novax}
+    annotations:
+      summary: "Bot heartbeat har stoppet"
+      description: "Ingen økning i novax_engine_heartbeat_total på 3m."
+
+  # 2) Equity drawdown >5% siste 24h
+  - alert: NOVAX_Equity_Drawdown
+    expr: ((max_over_time(novax_equity_usd[24h]) - novax_equity_usd) / max_over_time(novax_equity_usd[24h])) > 0.05
+    for: 2m
+    labels: {severity: critical, system: novax}
+    annotations:
+      summary: "Equity drawdown over 5% (24h)"
+      description: "Nåværende: {{ $value | humanizePercentage }} under siste 24h topp."
+
+  # 3) Exporter ned
+  - alert: NOVAX_Exporter_Down
+    expr: up{job="novax_exporter"} == 0
+    for: 1m
+    labels: {severity: critical, system: novax}
+    annotations:
+      summary: "novax_exporter er nede"
+      description: "Target {{ $labels.instance }} er nede."
+
+  # 4) Risk guard trigget (hvis metrikken finnes)
+  - alert: NOVAX_Risk_Guard_Triggered
+    expr: increase(novax_risk_guard_trigger_total[5m]) > 0
+    for: 0m
+    labels: {severity: critical, system: novax}
+    annotations:
+      summary: "Risk guard trigget"
+      description: "Risk guard har trigget minst én gang siste 5m."

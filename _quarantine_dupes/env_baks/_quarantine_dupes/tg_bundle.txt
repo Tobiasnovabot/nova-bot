@@ -1,0 +1,409 @@
+===== nova/telegram (tree) =====
+nova/telegram/tg_commands.py
+nova/telegram/run.py
+nova/telegram/commands.py
+nova/telegram/__init__.py
+
+===== FILE: nova/telegram/run.py =====
+# ~/nova-bot/nova/telegram/run.py
+import os, time, json, logging, urllib.parse, urllib.request
+from . import tg_commands as C
+
+LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").upper()
+logging.basicConfig(
+    level=getattr(logging, LOG_LEVEL, logging.INFO),
+    format="%(asctime)s %(levelname)s %(name)s: %(message)s"
+)
+log = logging.getLogger("nova.telegram.run")
+
+BOT   = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
+GUARD = os.getenv("TELEGRAM_CHAT_ID", "").strip()
+if not BOT or not GUARD:
+    raise SystemExit("Mangler TELEGRAM_BOT_TOKEN/TELEGRAM_CHAT_ID")
+
+GUARD_ID = int(GUARD)
+API = f"https://api.telegram.org/bot{BOT}"
+
+def api(method: str, params: dict = None, timeout: int = 30):
+    url = f"{API}/{method}"
+    data = urllib.parse.urlencode(params).encode() if params else None
+    req = urllib.request.Request(url, data=data, method="POST" if params else "GET")
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return json.loads(r.read() or b"{}")
+
+def send(cid: int, text: str):
+    MAX = 3900
+    for i in range(0, len(text) or 1, MAX):
+        chunk = text[i:i + MAX] or "."
+        try:
+            api("sendMessage", {"chat_id": cid, "text": chunk}, timeout=15)
+        except Exception as e:
+            log.warning("send fail: %s", e)
+        time.sleep(0.2)
+
+def handle_command(text: str, chat_id: int, user_id: int):
+    p    = text.strip().split()
+    cmd  = p[0].lower()
+    args = p[1:]
+
+    if   cmd == "/help":   return send(chat_id, C.help_text())
+    elif cmd == "/ping":   return send(chat_id, C.cmd_ping())
+    elif cmd == "/id":     return send(chat_id, C.cmd_id(chat_id, user_id))
+    elif cmd == "/health": return send(chat_id, C.cmd_health())
+    elif cmd == "/status": return send(chat_id, C.cmd_status())
+    elif cmd == "/on":     return send(chat_id, C.cmd_onoff(True))
+    elif cmd == "/off":    return send(chat_id, C.cmd_onoff(False))
+    elif cmd == "/watch":  return send(chat_id, C.cmd_watch(args))
+    elif cmd == "/quote":  return send(chat_id, C.cmd_quote(args))
+    else:
+        send(chat_id, "Ukjent kommando. /help")
+
+def main():
+    log.info("Telegram-kontroller starter (guard=%s)", GUARD_ID)
+    try:
+        # fjern webhook og dropp gamle updates
+        api("deleteWebhook", {"drop_pending_updates": True}, timeout=15)
+    except Exception as e:
+        log.warning("deleteWebhook: %s", e)
+
+    offset = None
+    while True:
+        try:
+            resp = api("getUpdates", {"offset": offset, "timeout": 25}, timeout=30)
+            for up in resp.get("result", []):
+                offset = up["update_id"] + 1
+                msg  = up.get("message") or {}
+                chat = msg.get("chat", {}).get("id")
+                uid  = (msg.get("from") or {}).get("id")
+                text = msg.get("text") or ""
+                if not (chat and text):
+                    continue
+                if int(chat) != GUARD_ID:
+                    send(chat, "⛔"); continue
+                handle_command(text, chat, uid)
+
+        except Exception as e:
+            log.warning("getUpdates feil: %s", e)
+            time.sleep(3)
+
+if __name__ == "__main__":
+    main()
+
+===== FILE: nova/telegram/tg_commands.py =====
+# ~/nova-bot/nova/telegram/tg_commands.py
+import os, json, time, subprocess, shlex, urllib.request, urllib.parse
+
+ROOT = os.getenv("NOVA_HOME", os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+STATE = os.path.join(ROOT, "data", "state.json")
+WATCH = os.path.join(ROOT, "data", "watchlist.json")
+
+def _read_json(path, default):
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return default
+
+def _write_json_atomic(path, obj):
+    tmp = path + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(obj, f, ensure_ascii=False, indent=2)
+        f.write("\n")
+    os.replace(tmp, path)
+
+def _run(cmd, timeout=3):
+    try:
+        out = subprocess.check_output(shlex.split(cmd), stderr=subprocess.STDOUT, timeout=timeout)
+        return out.decode("utf-8", "replace")
+    except Exception as e:
+        return f"ERR:{e}"
+
+def help_text():
+    return (
+        "📟 *NovaX Telegram*\n"
+        "/help – denne hjelpen\n"
+        "/ping – ping/pong\n"
+        "/id – vis chat og bruker ID\n"
+        "/health – status for tjenester\n"
+        "/status – bot/status + siste pos\n"
+        "/on – slå på bot\n"
+        "/off – slå av bot\n"
+        "/watch <tickers...> – sett/vis watchlist\n"
+        "/quote <ticker> [..] – hent pris (krever FINNHUB_KEY eller ALPHAVANTAGE_KEY)\n"
+    )
+
+def cmd_ping(): return "pong"
+
+def cmd_id(chat_id:int, user_id:int):
+    return f"chat_id={chat_id}\nuser_id={user_id}"
+
+def _svc_state(name):
+    out = _run(f"systemctl is-active {name}", timeout=2).strip()
+    return out if out else "unknown"
+
+def cmd_health():
+    services = ["novax.service", "novax-trade-alerts.service", "novatg.service"]
+    lines = []
+    for s in services:
+        lines.append(f"{s}: {_svc_state(s)}")
+    # equity metric (best-effort)
+    prom = os.path.join(ROOT, "metrics.prom")
+    if os.path.exists(prom):
+        try:
+            with open(prom, "r", encoding="utf-8") as f:
+                for ln in f:
+                    if ln.startswith("nova_equity_usd"):
+                        lines.append("metric: " + ln.strip())
+                        break
+        except Exception: pass
+    return "🩺 Health\n" + "\n".join(lines)
+
+def _read_state():
+    st = _read_json(STATE, {})
+    if not isinstance(st, dict): st = {}
+    if "bot_enabled" not in st: st["bot_enabled"] = False
+    if "mode" not in st: st["mode"] = "paper"
+    return st
+
+def _write_state(st:dict):
+    os.makedirs(os.path.dirname(STATE), exist_ok=True)
+    _write_json_atomic(STATE, st)
+
+def cmd_status():
+    st = _read_state()
+    # hent siste tick-linje fra journal (best-effort)
+    j = _run("journalctl -n50 -u novax.service -o cat", timeout=3)
+    pos = "-"
+    for ln in reversed(j.splitlines()):
+        if "tick OK" in ln and "pos=" in ln:
+            try:
+                pos = ln.split("pos=")[1].split()[0].strip(",")
+            except Exception:
+                pass
+            break
+    return (
+        "📊 Status\n"
+        f"bot_enabled = {st.get('bot_enabled')}\n"
+        f"mode        = {st.get('mode')}\n"
+        f"pos         = {pos}"
+    )
+
+def cmd_onoff(flag: bool):
+    st = _read_state()
+    st["bot_enabled"] = bool(flag)
+    _write_state(st)
+    # myk restart av engine (best-effort)
+    _run("systemctl restart novax.service", timeout=2)
+    return f"✅ bot_enabled = {st['bot_enabled']} (mode={st.get('mode')})"
+
+def cmd_watch(args):
+    os.makedirs(os.path.dirname(WATCH), exist_ok=True)
+    if not args:
+        cur = _read_json(WATCH, [])
+        if not cur: return "watchlist: (tom)"
+        return "watchlist: " + ", ".join(cur)
+    # sett ny liste
+    wl = [a.strip().upper() for a in args if a.strip()]
+    _write_json_atomic(WATCH, wl)
+    return "watchlist oppdatert: " + ", ".join(wl)
+
+def _fetch_quote_finnhub(symbol, key):
+    url = f"https://finnhub.io/api/v1/quote?symbol={urllib.parse.quote(symbol)}&token={key}"
+    with urllib.request.urlopen(url, timeout=5) as r:
+        data = json.loads(r.read() or b"{}")
+    price = data.get("c")
+    if price: return price
+    raise RuntimeError("no price")
+
+def _fetch_quote_alphavantage(symbol, key):
+    url = ("https://www.alphavantage.co/query?"
+           f"function=GLOBAL_QUOTE&symbol={urllib.parse.quote(symbol)}&apikey={key}")
+    with urllib.request.urlopen(url, timeout=8) as r:
+        data = json.loads(r.read() or b"{}")
+    price = (data.get("Global Quote") or {}).get("05. price")
+    if price: return float(price)
+    raise RuntimeError("no price")
+
+def cmd_quote(args):
+    if not args: return "bruk: /quote TICKER [TICKER...]"
+    fk = os.getenv("FINNHUB_KEY", "").strip()
+    ak = os.getenv("ALPHAVANTAGE_KEY", "").strip()
+    if not fk and not ak:
+        return "Ingen markedsnøkkel funnet (sett FINNHUB_KEY eller ALPHAVANTAGE_KEY i .env)."
+
+    out = []
+    for sym in args:
+        s = sym.upper().strip()
+        price = None
+        err = None
+        for fetch in (lambda: _fetch_quote_finnhub(s, fk) if fk else None,
+                      lambda: _fetch_quote_alphavantage(s, ak) if ak else None):
+            if fetch is None: continue
+            try:
+                price = fetch()
+                break
+            except Exception as e:
+                err = str(e)
+        out.append(f"{s}: {price}" if price is not None else f"{s}: n/a ({err or 'failed'})")
+        time.sleep(0.3)
+    return "💬 Quotes\n" + "\n".join(out)
+
+===== FILE: alerts/trade_to_tg.sh =====
+#!/usr/bin/env bash
+set -Eeuo pipefail
+source /home/nova/nova-bot/.env
+: "${TOKEN:?}"; : "${CHAT_ID:?}"
+
+LAST=/tmp/novax_last_pos
+LASTID=/tmp/novax_last_jid
+touch "$LAST" "$LASTID"
+
+while true; do
+  # hent siste 100 linjer, stabilt
+  JOUT="$(journalctl -n100 -u novax.service -o cat --since '1 min ago' || true)"
+  POS="$(awk -F'pos=' '/tick OK/ {print $2}' <<<"$JOUT" | awk '{print $1}' | tr -d ',' | tail -n1 || true)"
+  JID="$(journalctl --cursor-file="$LASTID" -u novax.service -o cat -n0 -q; echo $RANDOM)" # dummy touch
+
+  if [[ -n "${POS:-}" ]]; then
+    PREV="$(cat "$LAST" 2>/dev/null || true)"
+    if [[ "$POS" != "${PREV:-}" ]]; then
+      echo "$POS" >"$LAST"
+      curl -s "https://api.telegram.org/bot$TOKEN/sendMessage" \
+        -d chat_id="$CHAT_ID" -d text="🔔 Position count changed: ${PREV:-∅} → ${POS}" >/dev/null || true
+    fi
+  fi
+  sleep 5
+done
+
+===== SYSTEMD: novatg.service (cat) =====
+# /etc/systemd/system/novatg.service
+[Unit]
+Description=NovaX Telegram controller
+After=network-online.target
+Wants=network-online.target
+[Service]
+Type=simple
+User=nova
+WorkingDirectory=/home/nova/nova-bot
+EnvironmentFile=/home/nova/nova-bot/.env.systemd
+Environment=PYTHONUNBUFFERED=1
+RuntimeDirectory=novatg
+RuntimeDirectoryMode=0755
+ExecStartPre=/usr/bin/bash -c 'curl -s "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/deleteWebhook?drop_pending_updates=true" >/dev/null || true'
+ExecStart=/usr/bin/flock -n /run/novatg/lock /home/nova/nova-bot/.venv/bin/python -u -m nova.telegram.run
+Restart=always
+RestartSec=3
+[Install]
+WantedBy=multi-user.target
+
+===== SYSTEMD: novax-trade-alerts.service (cat) =====
+# /etc/systemd/system/novax-trade-alerts.service
+[Unit]
+Description=NovaX Trade Alerts to Telegram
+After=novax.service
+Requires=novax.service
+
+[Service]
+User=nova
+EnvironmentFile=/home/nova/nova-bot/.env
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target
+
+# /etc/systemd/system/novax-trade-alerts.service.d/override.conf
+[Service]
+ExecStart=
+ExecStart=/usr/bin/env bash -lc 'exec /home/nova/nova-bot/alerts/trade_to_tg.sh'
+Type=simple
+WorkingDirectory=/home/nova/nova-bot
+EnvironmentFile=/home/nova/nova-bot/.env
+SupplementaryGroups=systemd-journal
+StandardOutput=journal
+StandardError=journal
+Restart=always
+RestartSec=3
+
+===== .env (kun nøkkelnavn, redakt) =====
+EXCHANGE=***
+MODE=***
+TZ=***
+TELEGRAM_BOT_TOKEN=***
+TELEGRAM_CHAT_ID=***
+TG_ADMINS=***
+OKX_API_KEY=***
+OKX_API_SECRET=***
+OKX_PASSPHRASE=***
+OKX_PUBLIC_ONLY=***
+OKX_SIMULATED=***
+OKX_FUTURES=***
+BINANCE_API_KEY=***
+BINANCE_API_SECRET=***
+BINANCE_FUTURES=***
+BANKROLL_USD=***
+PROM_PUSHGATEWAY=***
+PROM_USER_URL=***
+NOVAX_EXPORTER_PORT=***
+NOVAX_EXTRA_EXPORTER_PORT=***
+GRAFANA_URL=***
+GRAFANA_USER=***
+GRAFANA_PASS=***
+NOVA_LEARN=***
+SIGNAL_LEARN=***
+BOT_INTEL_LEARN=***
+WF_TRAINER_ON=***
+TELEMETRY_VERBOSE=***
+DEV_DIAG=***
+MAX_POSITIONS=***
+MAX_LEVERAGE=***
+MAX_PER_TRADE_USD=***
+STOP_LOSS_PCT=***
+TAKE_PROFIT_PCT=***
+HTTP_HOST=***
+HTTP_PORT=***
+TRADE_EXCHANGE=***
+DATA_EXCHANGES=***
+TG_NOTIFY_POS_DELTA=***
+TG_NOTIFY_MIN_DELTA=***
+Description=***
+After=***
+Wants=***
+User=***
+WorkingDirectory=***
+EnvironmentFile=***
+ExecStart=***
+Restart=***
+RestartSec=***
+NoNewPrivileges=***
+ProtectSystem=***
+WantedBy=***
+
+===== Duplikat-sjekk i telegram-kode =====
+nova/telegram/commands.py:73:        "/ping – pong\n"
+nova/telegram/commands.py:74:        "/id – vis chat id\n"
+nova/telegram/commands.py:75:        "/status – state, pos, equity, service\n"
+nova/telegram/commands.py:196:        return "Ukjent kommando. /help"
+nova/telegram/run.py:42:    if   cmd == "/help":   return send(chat_id, C.help_text())
+nova/telegram/run.py:43:    elif cmd == "/ping":   return send(chat_id, C.cmd_ping())
+nova/telegram/run.py:44:    elif cmd == "/id":     return send(chat_id, C.cmd_id(chat_id, user_id))
+nova/telegram/run.py:45:    elif cmd == "/health": return send(chat_id, C.cmd_health())
+nova/telegram/run.py:46:    elif cmd == "/status": return send(chat_id, C.cmd_status())
+nova/telegram/run.py:47:    elif cmd == "/on":     return send(chat_id, C.cmd_onoff(True))
+nova/telegram/run.py:48:    elif cmd == "/off":    return send(chat_id, C.cmd_onoff(False))
+nova/telegram/run.py:49:    elif cmd == "/watch":  return send(chat_id, C.cmd_watch(args))
+nova/telegram/run.py:50:    elif cmd == "/quote":  return send(chat_id, C.cmd_quote(args))
+nova/telegram/run.py:52:        send(chat_id, "Ukjent kommando. /help")
+nova/telegram/tg_commands.py:32:        "/help – denne hjelpen\n"
+nova/telegram/tg_commands.py:33:        "/ping – ping/pong\n"
+nova/telegram/tg_commands.py:34:        "/id – vis chat og bruker ID\n"
+nova/telegram/tg_commands.py:35:        "/health – status for tjenester\n"
+nova/telegram/tg_commands.py:36:        "/status – bot/status + siste pos\n"
+nova/telegram/tg_commands.py:37:        "/on – slå på bot\n"
+nova/telegram/tg_commands.py:38:        "/off – slå av bot\n"
+nova/telegram/tg_commands.py:39:        "/watch <tickers...> – sett/vis watchlist\n"
+nova/telegram/tg_commands.py:40:        "/quote <ticker> [..] – hent pris (krever FINNHUB_KEY eller ALPHAVANTAGE_KEY)\n"
+nova/telegram/tg_commands.py:119:    url = f"https://finnhub.io/api/v1/quote?symbol={urllib.parse.quote(symbol)}&token={key}"
+nova/telegram/tg_commands.py:136:    if not args: return "bruk: /quote TICKER [TICKER...]"

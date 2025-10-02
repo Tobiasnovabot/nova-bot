@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+tail -n 200 -f "$HOME/nova-bot/logs/bot.out"

@@ -1,0 +1,20 @@
+groups:
+- name: novax_rebased
+  rules:
+  # Rebaset equity rundt budsjett (brukes i grafen)
+  - record: novax_equity_rebased_usd
+    expr: scalar(last_over_time(novax_bankroll_usd[5m])) + (novax_equity_usd - (novax_equity_usd offset 24h))
+
+  # Trades (total og siste 24h)
+  - record: novax_trades_total
+    expr: sum(novax_trades_closed_total)
+  - record: novax_trades_24h
+    expr: increase(novax_trades_closed_total[24h])
+
+  # PnL (total og siste 24h)
+  - record: novax_pnl_realized_24h_usd
+    expr: delta(novax_pnl_realized_total_usd[24h])
+
+  # Siste kjente "last trade age"
+  - record: novax_last_trade_age_s_latest
+    expr: last_over_time(novax_last_trade_age_s[5m])

@@ -1,0 +1,12 @@
+# spec_schema.yaml
+required:
+  - project
+  - spec
+allowed_ops:
+  - mkdir
+  - write
+  - patch_json
+  - patch_yaml
+  - patch_py
+  - replace
+  - systemctl

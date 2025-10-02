@@ -1,0 +1,15 @@
+{
+  "title": "Trades & Risk",
+  "panels": [
+    {"type":"stat","title":"Trades Total","gridPos":{"x":0,"y":0,"w":4,"h":4},
+     "targets":[{"expr":"novax_trades_total"}],
+     "options":{"reduceOptions":{"calcs":["lastNotNull"]}}},
+    {"type":"gauge","title":"Drawdown","gridPos":{"x":4,"y":0,"w":4,"h":4},
+     "targets":[{"expr":"novax_drawdown"}]},
+    {"type":"stat","title":"Last Trade Side","gridPos":{"x":8,"y":0,"w":4,"h":4},
+     "targets":[{"expr":"novax_last_trade_side"}],
+     "options":{"reduceOptions":{"calcs":["lastNotNull"]}}},
+    {"type":"table","title":"Positions Qty","gridPos":{"x":0,"y":4,"w":12,"h":6},
+     "targets":[{"expr":"novax_position_qty"}]}
+  ]
+}

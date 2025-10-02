@@ -1,0 +1,17 @@
+groups:
+- name: novax.rules
+  rules:
+  - alert: NovaXHeartbeatStale
+    expr: novax_heartbeat_age_sec > 300
+    for: 2m
+    labels: { severity: warning }
+    annotations:
+      summary: "NovaX heartbeat stale"
+      description: "No engine tick for over 5 minutes."
+  - alert: NovaXEquityDrop
+    expr: (novax_equity_usd - (novax_equity_usd offset 1h)) < -50
+    for: 5m
+    labels: { severity: warning }
+    annotations:
+      summary: "Equity droppet siste time"
+      description: "Equity falt > $50 siste time."

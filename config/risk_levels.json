@@ -1,0 +1,242 @@
+{
+  "1": {
+    "max_positions": 2,
+    "max_per_symbol_pct": 11.75,
+    "dd_day_pct": 0.8,
+    "vol_target_bps": 55,
+    "base_usd_per_trade": 50.0,
+    "gross_cap_usd": 400.0
+  },
+  "2": {
+    "max_positions": 3,
+    "max_per_symbol_pct": 11.5,
+    "dd_day_pct": 0.95,
+    "vol_target_bps": 60,
+    "base_usd_per_trade": 61.0,
+    "gross_cap_usd": 488.0
+  },
+  "3": {
+    "max_positions": 3,
+    "max_per_symbol_pct": 11.25,
+    "dd_day_pct": 1.1,
+    "vol_target_bps": 65,
+    "base_usd_per_trade": 74.42,
+    "gross_cap_usd": 595.36
+  },
+  "4": {
+    "max_positions": 4,
+    "max_per_symbol_pct": 11.0,
+    "dd_day_pct": 1.25,
+    "vol_target_bps": 70,
+    "base_usd_per_trade": 90.79,
+    "gross_cap_usd": 726.32
+  },
+  "5": {
+    "max_positions": 4,
+    "max_per_symbol_pct": 10.75,
+    "dd_day_pct": 1.4,
+    "vol_target_bps": 75,
+    "base_usd_per_trade": 110.77,
+    "gross_cap_usd": 886.16
+  },
+  "6": {
+    "max_positions": 5,
+    "max_per_symbol_pct": 10.5,
+    "dd_day_pct": 1.55,
+    "vol_target_bps": 80,
+    "base_usd_per_trade": 135.14,
+    "gross_cap_usd": 1081.12
+  },
+  "7": {
+    "max_positions": 5,
+    "max_per_symbol_pct": 10.25,
+    "dd_day_pct": 1.7,
+    "vol_target_bps": 85,
+    "base_usd_per_trade": 164.87,
+    "gross_cap_usd": 1318.96
+  },
+  "8": {
+    "max_positions": 6,
+    "max_per_symbol_pct": 10.0,
+    "dd_day_pct": 1.85,
+    "vol_target_bps": 90,
+    "base_usd_per_trade": 201.14,
+    "gross_cap_usd": 1609.12
+  },
+  "9": {
+    "max_positions": 6,
+    "max_per_symbol_pct": 9.75,
+    "dd_day_pct": 2.0,
+    "vol_target_bps": 95,
+    "base_usd_per_trade": 245.39,
+    "gross_cap_usd": 1963.12
+  },
+  "10": {
+    "max_positions": 7,
+    "max_per_symbol_pct": 9.5,
+    "dd_day_pct": 2.15,
+    "vol_target_bps": 100,
+    "base_usd_per_trade": 299.37,
+    "gross_cap_usd": 2394.96
+  },
+  "11": {
+    "max_positions": 7,
+    "max_per_symbol_pct": 9.25,
+    "dd_day_pct": 2.3,
+    "vol_target_bps": 105,
+    "base_usd_per_trade": 365.23,
+    "gross_cap_usd": 2921.84
+  },
+  "12": {
+    "max_positions": 8,
+    "max_per_symbol_pct": 9.0,
+    "dd_day_pct": 2.45,
+    "vol_target_bps": 110,
+    "base_usd_per_trade": 445.58,
+    "gross_cap_usd": 3564.64
+  },
+  "13": {
+    "max_positions": 8,
+    "max_per_symbol_pct": 8.75,
+    "dd_day_pct": 2.6,
+    "vol_target_bps": 115,
+    "base_usd_per_trade": 543.61,
+    "gross_cap_usd": 4348.88
+  },
+  "14": {
+    "max_positions": 9,
+    "max_per_symbol_pct": 8.5,
+    "dd_day_pct": 2.75,
+    "vol_target_bps": 120,
+    "base_usd_per_trade": 663.21,
+    "gross_cap_usd": 5305.68
+  },
+  "15": {
+    "max_positions": 9,
+    "max_per_symbol_pct": 8.25,
+    "dd_day_pct": 2.9,
+    "vol_target_bps": 125,
+    "base_usd_per_trade": 809.11,
+    "gross_cap_usd": 6472.88
+  },
+  "16": {
+    "max_positions": 10,
+    "max_per_symbol_pct": 8.0,
+    "dd_day_pct": 3.05,
+    "vol_target_bps": 130,
+    "base_usd_per_trade": 987.11,
+    "gross_cap_usd": 7896.88
+  },
+  "17": {
+    "max_positions": 10,
+    "max_per_symbol_pct": 7.75,
+    "dd_day_pct": 3.2,
+    "vol_target_bps": 135,
+    "base_usd_per_trade": 1204.28,
+    "gross_cap_usd": 9634.24
+  },
+  "18": {
+    "max_positions": 11,
+    "max_per_symbol_pct": 7.5,
+    "dd_day_pct": 3.35,
+    "vol_target_bps": 140,
+    "base_usd_per_trade": 1469.22,
+    "gross_cap_usd": 11753.76
+  },
+  "19": {
+    "max_positions": 11,
+    "max_per_symbol_pct": 7.25,
+    "dd_day_pct": 3.5,
+    "vol_target_bps": 145,
+    "base_usd_per_trade": 1792.45,
+    "gross_cap_usd": 14339.6
+  },
+  "20": {
+    "max_positions": 12,
+    "max_per_symbol_pct": 7.0,
+    "dd_day_pct": 3.65,
+    "vol_target_bps": 150,
+    "base_usd_per_trade": 2186.79,
+    "gross_cap_usd": 17494.32
+  },
+  "21": {
+    "max_positions": 12,
+    "max_per_symbol_pct": 6.75,
+    "dd_day_pct": 3.8,
+    "vol_target_bps": 155,
+    "base_usd_per_trade": 2667.88,
+    "gross_cap_usd": 21343.04
+  },
+  "22": {
+    "max_positions": 13,
+    "max_per_symbol_pct": 6.5,
+    "dd_day_pct": 3.95,
+    "vol_target_bps": 160,
+    "base_usd_per_trade": 3254.82,
+    "gross_cap_usd": 26038.56
+  },
+  "23": {
+    "max_positions": 13,
+    "max_per_symbol_pct": 6.25,
+    "dd_day_pct": 4.1,
+    "vol_target_bps": 165,
+    "base_usd_per_trade": 3970.88,
+    "gross_cap_usd": 31767.04
+  },
+  "24": {
+    "max_positions": 14,
+    "max_per_symbol_pct": 6.0,
+    "dd_day_pct": 4.25,
+    "vol_target_bps": 170,
+    "base_usd_per_trade": 4844.47,
+    "gross_cap_usd": 38755.76
+  },
+  "25": {
+    "max_positions": 14,
+    "max_per_symbol_pct": 5.75,
+    "dd_day_pct": 4.4,
+    "vol_target_bps": 175,
+    "base_usd_per_trade": 5910.25,
+    "gross_cap_usd": 47282.0
+  },
+  "26": {
+    "max_positions": 15,
+    "max_per_symbol_pct": 5.5,
+    "dd_day_pct": 4.55,
+    "vol_target_bps": 180,
+    "base_usd_per_trade": 7210.51,
+    "gross_cap_usd": 57684.08
+  },
+  "27": {
+    "max_positions": 15,
+    "max_per_symbol_pct": 5.25,
+    "dd_day_pct": 4.7,
+    "vol_target_bps": 185,
+    "base_usd_per_trade": 8796.82,
+    "gross_cap_usd": 70374.56
+  },
+  "28": {
+    "max_positions": 16,
+    "max_per_symbol_pct": 5.0,
+    "dd_day_pct": 4.85,
+    "vol_target_bps": 190,
+    "base_usd_per_trade": 10732.12,
+    "gross_cap_usd": 85856.96
+  },
+  "29": {
+    "max_positions": 16,
+    "max_per_symbol_pct": 4.75,
+    "dd_day_pct": 5.0,
+    "vol_target_bps": 195,
+    "base_usd_per_trade": 13093.18,
+    "gross_cap_usd": 104745.44
+  },
+  "30": {
+    "max_positions": 17,
+    "max_per_symbol_pct": 4.5,
+    "dd_day_pct": 5.15,
+    "vol_target_bps": 200,
+    "base_usd_per_trade": 15973.68,
+    "gross_cap_usd": 127789.44
+  }
+}

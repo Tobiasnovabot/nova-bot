@@ -1,0 +1,117 @@
+import os, time
+from datetime import datetime, timezone
+
+try:
+    from dotenv import load_dotenv
+except Exception:
+    def load_dotenv(*a, **k): pass
+
+def LOG_write(msg: str):
+    ts = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    print(f"{ts} {msg}", flush=True)
+
+class Engine:
+    def __init__(self, cfg: dict):
+        self.cfg = cfg or {}
+        # paper state
+        self.equity = float(os.getenv("START_CASH", "10000"))
+        self.cash   = float(os.getenv("START_CASH", "10000"))
+        self.trades = 0
+        self.pnl_realized   = 0.0
+        self.pnl_unrealized = 0.0
+        self.positions = {}
+
+        # ccxt
+        import ccxt
+        self.ex = ccxt.binance({
+            'timeout': 15000,
+            'enableRateLimit': True,
+            'options': {'defaultType': 'spot'},
+        })
+
+        # universe/timeframe fra ENV (fallbacks)
+        syms_env = os.getenv('SYMBOLS', 'BTC/USDT,ETH/USDT,SOL/USDT')
+        self.universe = [s.strip() for s in syms_env.split(',') if s.strip()]
+        self.params = {'timeframe': os.getenv('TIMEFRAME', '1h')}
+
+    def _write_metrics(self, ohlc_map: dict):
+        from pathlib import Path as _P
+        base_ccy = os.getenv('BASE_CCY', 'USDT')
+        equity   = float(getattr(self, 'equity', 10000.0))
+        cash     = float(getattr(self, 'cash',   10000.0))
+        trades   = int(getattr(self, 'trades',  0))
+        pnl_r    = float(getattr(self, 'pnl_realized',   0.0))
+        pnl_u    = float(getattr(self, 'pnl_unrealized', 0.0))
+
+        out = [
+            "# HELP novax_up Always 1 if exporter alive",
+            "# TYPE novax_up gauge",
+            "novax_up 1",
+            "# HELP novax_equity Paper equity in base ccy",
+            "# TYPE novax_equity gauge",
+            f'novax_equity{{ccy="{base_ccy}"}} {equity}',
+            "# HELP novax_cash Free cash",
+            "# TYPE novax_cash gauge",
+            f'novax_cash{{ccy="{base_ccy}"}} {cash}',
+            "# HELP novax_trades_total Total trades",
+            "# TYPE novax_trades_total counter",
+            f'novax_trades_total {trades}',
+            "# HELP novax_pnl_realized Realized PnL",
+            "# TYPE novax_pnl_realized counter",
+            f'novax_pnl_realized {pnl_r}',
+            "# HELP novax_pnl_unrealized Unrealized PnL",
+            "# TYPE novax_pnl_unrealized gauge",
+            f'novax_pnl_unrealized {pnl_u}',
+        ]
+
+        positions = getattr(self, 'positions', {}) or {}
+        for sym, pos in positions.items():
+            qty = float(pos.get('qty', 0.0))
+            out.append(f'novax_position_qty{{symbol="{sym}"}} {qty}')
+
+        _P("runtime").mkdir(exist_ok=True)
+        _P("runtime/metrics.prom").write_text("\n".join(out) + "\n", encoding="utf-8")
+
+    def loop(self):
+        tf = os.getenv('TIMEFRAME', self.params.get('timeframe', '1h'))
+        syms = self.universe[: min(50, len(self.universe))]
+        if not syms:
+            syms = [x.strip() for x in os.getenv('SYMBOLS','BTC/USDT,ETH/USDT,SOL/USDT').split(',') if x.strip()]
+
+        ohlc_map = {}
+        for s_ in syms:
+            for _try in range(3):
+                try:
+                    ohlc_map[s_] = self.ex.fetch_ohlcv(s_, timeframe=tf, limit=200)
+                    break
+                except Exception as e:
+                    LOG_write(f"fetch_ohlcv fail {s_}/{tf}: {e}")
+                    if _try == 2:
+                        pass
+                    time.sleep(1.0)
+
+        LOG_write(f"loop ok syms={len(syms)} tf={tf} ohlc_keys={len(ohlc_map)}")
+        self._write_metrics(ohlc_map)
+        return
+
+def main():
+    load_dotenv()
+    LOG_write(f"engine boot: {os.getenv('EXCHANGE')} / {os.getenv('MODE')}")
+    eng = Engine(cfg=os.environ.copy())
+    try:
+        eng._write_metrics({})
+    except Exception:
+        pass
+
+    backoff = 1.0
+    while True:
+        try:
+            eng.loop()
+            backoff = 1.0
+        except Exception as e:
+            LOG_write(f"engine loop error: {e}")
+            backoff = min(backoff * 2, 30.0)
+        time.sleep(backoff)
+
+if __name__ == "__main__":
+    main()

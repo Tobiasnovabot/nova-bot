@@ -1,0 +1,11 @@
+{ "title":"NovaX Overview","timezone":"browser","schemaVersion":39,"version":1,"refresh":"10s",
+  "panels":[
+    {"type":"stat","title":"Equity (USD)","targets":[{"expr":"novax_equity_usd"}],"gridPos":{"x":0,"y":0,"w":6,"h":6}},
+    {"type":"stat","title":"Bot Enabled","targets":[{"expr":"novax_bot_enabled"}],"gridPos":{"x":6,"y":0,"w":3,"h":6}},
+    {"type":"stat","title":"Open Positions","targets":[{"expr":"novax_positions_open"}],"gridPos":{"x":9,"y":0,"w":3,"h":6}},
+    {"type":"graph","title":"Equity over time","targets":[{"expr":"novax_equity_usd"}],"gridPos":{"x":0,"y":6,"w":12,"h":8}},
+    {"type":"graph","title":"Trades total","targets":[{"expr":"sum(novax_trades_recent)"}],"gridPos":{"x":0,"y":14,"w":6,"h":8}},
+    {"type":"graph","title":"Last trade age (s)","targets":[{"expr":"novax_last_trade_age_sec"}],"gridPos":{"x":6,"y":14,"w":6,"h":8}},
+    {"type":"stat","title":"Watch count","targets":[{"expr":"novax_watch_count or novax_watch_size"}],"gridPos":{"x":0,"y":22,"w":3,"h":6}}
+  ]
+}

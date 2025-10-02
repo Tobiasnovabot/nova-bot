@@ -1,0 +1,15 @@
+[Unit]
+Description=Nova Telegram
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=nova
+WorkingDirectory=${NOVA_HOME}
+EnvironmentFile=-${NOVA_HOME}/.env
+ExecStart=${NOVA_HOME}/.venv/bin/python -m nova.telegram.run
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+ps -ef | grep -E 'bot_main\.py|telegram_ctl\.run' | grep -v grep || echo "Ingen bot-prosess funnet."
+test -f "$HOME/nova-bot/bot.pid" && echo "pid: $(cat $HOME/nova-bot/bot.pid)"

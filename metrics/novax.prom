@@ -1,0 +1,18 @@
+# HELP novax_bot_enabled 1 if bot enabled
+# TYPE novax_bot_enabled gauge
+novax_bot_enabled 1 1757307455000
+# HELP novax_equity_usd Latest equity
+# TYPE novax_equity_usd gauge
+novax_equity_usd 4875.774228562881 1757307455000
+# HELP novax_positions_open Count of positions
+# TYPE novax_positions_open gauge
+novax_positions_open 27 1757307455000
+# HELP novax_heartbeat_age_s Engine heartbeat staleness
+# TYPE novax_heartbeat_age_s gauge
+novax_heartbeat_age_s 9999.0 1757307455000
+# HELP novax_dd_1h_pct Drawdown last 1h percent
+# TYPE novax_dd_1h_pct gauge
+novax_dd_1h_pct 0.000000 1757307455000
+# HELP novax_dd_24h_pct Drawdown last 24h percent
+# TYPE novax_dd_24h_pct gauge
+novax_dd_24h_pct 0.000000 1757307455000

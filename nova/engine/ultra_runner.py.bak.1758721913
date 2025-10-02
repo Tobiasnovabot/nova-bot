@@ -1,0 +1,62 @@
+import os, time, json, importlib
+from .metrics import start as metrics_start, set_equity, set_open, set_universe, error as m_err
+from .exchanges import make_clients, load_universe
+from .sizer import position_size
+from .pyramid import schedule
+from .risk_guard import clamp_positions
+from .broker_paper import PaperBroker
+
+def load_equity():
+    try:
+        with open('runtime/equity.json','r') as f: return float(json.load(f).get('equity',0))
+    except Exception:
+        return float(os.getenv('EQUITY_USDT','1000'))
+
+def main():
+    metrics_start(int(os.getenv('ULTRA_METRICS_PORT','9113')))
+    equity=load_equity(); set_equity(equity)
+    names=[s.strip() for s in os.getenv('EXCHANGE','binance').split(',') if s.strip()]
+    clients=make_clients(names)
+    quote=os.getenv('QUOTE','USDT')
+    top_n=int(os.getenv('TOP_N','120'))
+    min_vol_usd=float(os.getenv('MIN_VOL_USD','20000'))
+    scan_limit=int(os.getenv('SCAN_LIMIT','80'))
+    risk_frac=float(os.getenv('RISK_FRAC','0.003'))
+    max_positions=int(os.getenv('MAX_POSITIONS','8'))
+    trail_pct=float(os.getenv('TRAIL_PCT','0.03'))
+    take_min=float(os.getenv('TAKE_MIN','0.02'))
+    pyramid_steps=int(os.getenv('PYRAMID_STEPS','3'))
+    pyramid_add=float(os.getenv('PYRAMID_ADD_FRAC','0.5'))
+    loop_delay=float(os.getenv('LOOP_DELAY','5'))
+
+    brk=PaperBroker()
+    open_positions=0; set_open(open_positions)
+
+    universe=load_universe(clients, quote=quote, top_n=top_n, min_vol_usd=min_vol_usd)
+    pairs=universe[:scan_limit]
+    set_universe(len(pairs))
+    print(f"[ultra] equity={equity:.2f} pairs={len(pairs)}", flush=True)
+
+    strat_mod=importlib.import_module('nova.engine.strategy')
+
+    while True:
+        try:
+            for ex_sym in pairs:
+                ex, sym = ex_sym.split(':',1)
+                c=clients.get(ex)
+                if not c: continue
+                t=c.fetch_ticker(sym)
+                decision=strat_mod.decide(t, trail_pct, take_min)
+                if not decision: continue
+                if not clamp_positions(open_positions, max_positions): continue
+                px=float(t.get('last') or t.get('close') or 0)
+                if px<=0: continue
+                qty=position_size(equity, risk_frac, px)
+                steps=schedule(qty, pyramid_steps, pyramid_add)
+                brk.market(f"{ex}:{sym}", 'buy', steps[0], px)
+                open_positions+=1; set_open(open_positions)
+            time.sleep(loop_delay)
+        except Exception as e:
+            m_err(); print("[ultra] error", e, flush=True); time.sleep(1)
+
+if __name__=='__main__': main()

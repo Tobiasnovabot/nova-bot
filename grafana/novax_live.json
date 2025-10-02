@@ -1,0 +1,42 @@
+{
+  "title": "NOVAX Live",
+  "timezone": "browser",
+  "refresh": "10s",
+  "schemaVersion": 38,
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Equity",
+      "targets": [{"expr":"novax_equity_total"}],
+      "gridPos": {"x":0,"y":0,"w":12,"h":6}
+    },
+    {
+      "type": "timeseries",
+      "title": "PnL total & 12h endring",
+      "targets": [{"expr":"novax_pnl_total"},{"expr":"increase(novax_pnl_total[12h])"}],
+      "gridPos": {"x":12,"y":0,"w":12,"h":6}
+    },
+    {
+      "type": "state-timeline",
+      "title": "Signal per strategi",
+      "targets": [{"expr":"novax_signal"}],
+      "options": {"rowHeight": 0.9},
+      "gridPos": {"x":0,"y":6,"w":24,"h":6}
+    },
+    {
+      "type": "table",
+      "title": "Posisjoner og priser",
+      "targets": [
+        {"expr":"novax_position_qty"},
+        {"expr":"novax_last_price"}
+      ],
+      "gridPos": {"x":0,"y":12,"w":12,"h":7}
+    },
+    {
+      "type": "stat",
+      "title": "Firing alerts",
+      "targets": [{"expr":"ALERTS{alertstate=\"firing\"}"}],
+      "gridPos": {"x":12,"y":12,"w":12,"h":7}
+    }
+  ]
+}

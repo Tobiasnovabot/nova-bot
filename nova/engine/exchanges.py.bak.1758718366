@@ -1,0 +1,37 @@
+import os, ccxt
+from typing import Dict, Any, List
+def make_clients(names: List[str]) -> Dict[str, Any]:
+    out={}
+    for name in names:
+        n=name.strip().lower()
+        if not n or n not in ccxt.exchanges: continue
+        klass=getattr(ccxt, n); kw={}
+        if n=='binance':
+            kw={'apiKey':os.getenv('BINANCE_KEY',''), 'secret':os.getenv('BINANCE_SECRET','')}
+            if os.getenv('BINANCE_TESTNET')=='1':
+                kw['options']={'defaultType':'future'}; klass=ccxt.binanceusdm
+        if n=='okx':
+            kw={'apiKey':os.getenv('OKX_KEY',''), 'secret':os.getenv('OKX_SECRET',''), 'password':os.getenv('OKX_PASSWORD','')}
+        c=klass(kw); c.enableRateLimit=True; out[n]=c
+    return out
+def load_universe(clients: Dict[str,Any], quote='USDT', top_n=80, min_vol_usd=200000):
+    uni=[]
+    for ex,c in clients.items():
+        try:
+            mk=c.load_markets(); rows=[]
+            for m in mk.values():
+                if not m.get('active') or not m.get('spot'): continue
+                sym=m['symbol']; 
+                if not sym.endswith('/'+quote): continue
+                info=m.get('info',{})
+                vol=float(info.get('quoteVolume',0) or info.get('vol24h',0) or 0)
+                if vol<=0:
+                    try: vol=float(c.fetch_ticker(sym).get('quoteVolume',0) or 0)
+                    except Exception: vol=0
+                rows.append((vol,sym))
+            rows.sort(reverse=True)
+            for vol,sym in rows[:top_n]:
+                if vol>=min_vol_usd: uni.append((ex,sym))
+        except Exception: 
+            continue
+    return uni

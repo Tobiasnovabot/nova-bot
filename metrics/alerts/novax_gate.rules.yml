@@ -1,0 +1,8 @@
+groups:
+- name: novax_gate
+  rules:
+  - alert: NovaXLiquidityBlocks
+    expr: novax_liquidity_blocked > 0
+    for: 10m
+    labels: {severity: warning}
+    annotations: {summary: "Liquidity gate blocking entries"}

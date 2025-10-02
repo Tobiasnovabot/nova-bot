@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -e
+cmd="${1:-}"; shift || true
+case "$cmd" in
+  status)      systemctl --no-pager --full -l status nova-engine ;;
+  logs)        sudo journalctl -u nova-engine -n "${1:-200}" --no-pager ;;
+  follow)      sudo journalctl -u nova-engine -fn 200 ;;
+  start)       sudo systemctl start nova-engine ;;
+  stop)        sudo systemctl stop nova-engine ;;
+  restart)     sudo systemctl restart nova-engine ;;
+  pause)       touch PAUSE_ALL; echo "PAUSE_ALL on" ;;
+  resume)      rm -f PAUSE_ALL PAUSE_BUYS; echo "PAUSE flags cleared" ;;
+  pause-buys)  touch PAUSE_BUYS; echo "PAUSE_BUYS on" ;;
+  sell-all)    touch SELL_ALL; echo "SELL_ALL queued" ;;
+  *) echo "usage: $0 {status|logs [N]|follow|start|stop|restart|pause|resume|pause-buys|sell-all}"; exit 1 ;;
+esac

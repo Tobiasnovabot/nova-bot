@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+set -euo pipefail
+CMD="${1:-}"
+QUOTE="${QUOTE:-USDC}"
+
+case "$CMD" in
+  start)
+    systemctl --user daemon-reload
+    systemctl --user start nova-engine-ultra.service
+    ;;
+  stop)
+    set -a; source ./.env; set +a
+    PYTHONPATH=$PWD .venv/bin/python -m nova.engine.broker_live flatten --quote "$QUOTE" || true
+    systemctl --user stop nova-engine-ultra.service
+    ;;
+  watch)
+    watch -n 5 'curl -s localhost:9124/metrics | egrep "^novax_ultra_(equity|universe_size|scan_pairs|pair_evals_total|loops_total|strategy_signals_total|trades_total|open)"'
+    ;;
+  trades)
+    tail -f runtime/trades.jsonl
+    ;;
+  logs)
+    journalctl --user -u nova-engine-ultra.service -f | egrep "^\[ultra\]|\[scan\]|\[positions\]|\[metrics\]"
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|watch|trades|logs}"
+    exit 1
+    ;;
+esac

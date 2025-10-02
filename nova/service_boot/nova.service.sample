@@ -1,0 +1,12 @@
+[Unit]
+Description=Nova trading engine
+After=network-online.target
+[Service]
+User=nova
+WorkingDirectory=/home/nova/nova-bot
+Environment=ENGINE_ONCE=0 ENGINE_LOOP_SEC=30 EXCHANGE=binance MODE=paper
+ExecStart=/home/nova/nova-bot/.venv/bin/python -m nova.engine.run
+Restart=always
+RestartSec=5
+[Install]
+WantedBy=multi-user.target

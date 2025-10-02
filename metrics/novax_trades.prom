@@ -1,0 +1,17 @@
+# HELP novax_trades_closed_total Total closed trades
+# TYPE novax_trades_closed_total gauge
+novax_trades_closed_total 0 1757354496000
+# HELP novax_trades_winrate Winrate 0-1 over all closed trades
+# TYPE novax_trades_winrate gauge
+novax_trades_winrate 0.000000 1757354496000
+# HELP novax_trades_payoff Payoff ratio avg_win/avg_loss
+# TYPE novax_trades_payoff gauge
+novax_trades_payoff 0.000000 1757354496000
+# HELP novax_trades_avg_win_usd Average win in USD
+# TYPE novax_trades_avg_win_usd gauge
+novax_trades_avg_win_usd 0.000000 1757354496000
+# HELP novax_trades_avg_loss_usd Average loss in USD
+# TYPE novax_trades_avg_loss_usd gauge
+novax_trades_avg_loss_usd 0.000000 1757354496000
+# HELP novax_trades_winrate_strategy Winrate by strategy 0-1
+# TYPE novax_trades_winrate_strategy gauge

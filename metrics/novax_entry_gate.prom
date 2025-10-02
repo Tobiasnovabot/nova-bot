@@ -1,0 +1,6 @@
+# HELP novax_entry_hold 1 if entry throttle is active
+# TYPE novax_entry_hold gauge
+novax_entry_hold 0 1757354563000
+# HELP novax_entry_hold_reason Reason text (as info)
+# TYPE novax_entry_hold_reason gauge
+novax_entry_hold_reason{reason="ok"} 0 1757354563000

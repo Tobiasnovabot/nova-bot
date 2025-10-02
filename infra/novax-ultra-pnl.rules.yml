@@ -1,0 +1,23 @@
+groups:
+- name: novax-ultra-pnl
+  interval: 30s
+  rules:
+  # Equity-basert PnL vs baseline (1000 USDT)
+  - record: novax_ultra:pnl_abs
+    expr: novax_ultra_equity - 1000
+
+  # Daglig PnL (equity differanse siste 24t)
+  - record: novax_ultra:pnl_1d
+    expr: last_over_time(novax_ultra_equity[1d]) - first_over_time(novax_ultra_equity[1d])
+
+  # Månedlig PnL (equity differanse siste 30d)
+  - record: novax_ultra:pnl_30d
+    expr: last_over_time(novax_ultra_equity[30d]) - first_over_time(novax_ultra_equity[30d])
+
+  # Trades / dag
+  - record: novax_ultra:trades_1d
+    expr: increase(novax_ultra_trades_total[1d])
+
+  # Signals / dag (summert over strategier)
+  - record: novax_ultra:signals_1d
+    expr: sum(increase(novax_ultra_strategy_signals_total[1d]))

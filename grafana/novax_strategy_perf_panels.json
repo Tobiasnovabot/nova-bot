@@ -1,0 +1,29 @@
+[
+  {
+    "title":"Sharpe per strategi",
+    "type":"bargauge",
+    "targets":[{"expr":"novax_strategy_sharpe"}],
+    "options":{"reduceOptions":{"calcs":["lastNotNull"]}},
+    "gridPos":{"x":0,"y":0,"w":12,"h":6}
+  },
+  {
+    "title":"Realized PnL per strategi",
+    "type":"graph",
+    "targets":[{"expr":"novax_strategy_pnl"}],
+    "gridPos":{"x":0,"y":6,"w":12,"h":6}
+  },
+  {
+    "title":"Winrate per strategi",
+    "type":"table",
+    "targets":[{"expr":"novax_strategy_winrate"}],
+    "gridPos":{"x":0,"y":12,"w":12,"h":6},
+    "transformations":[{"id":"labelsToFields"}]
+  },
+  {
+    "title":"Trades per strategi",
+    "type":"stat",
+    "targets":[{"expr":"sum by (strategy) (novax_strategy_trades)"}],
+    "options":{"reduceOptions":{"calcs":["lastNotNull"]}},
+    "gridPos":{"x":12,"y":0,"w":12,"h":6}
+  }
+]

@@ -1,0 +1,32 @@
+# HELP novax_pos_spread_bps Position spread bps
+# TYPE novax_pos_spread_bps gauge
+novax_pos_spread_bps{symbol="OKB/USDT"} 99999.000000 1757307465663
+novax_pos_spread_bps{symbol="ASR/USDT"} 11.916584 1757307465663
+novax_pos_spread_bps{symbol="AI/USDT"} 7.785130 1757307465663
+novax_pos_spread_bps{symbol="DOT/USDT"} 2.484781 1757307465663
+novax_pos_spread_bps{symbol="KAIA/USDT"} 6.542362 1757307465663
+novax_pos_spread_bps{symbol="SOLV/USDT"} 4.562044 1757307465663
+novax_pos_spread_bps{symbol="GTC/USDT"} 28.694405 1757307465663
+novax_pos_spread_bps{symbol="BMT/USDT"} 14.803849 1757307465663
+novax_pos_spread_bps{symbol="TOWNS/USDT"} 6.963788 1757307465663
+novax_pos_spread_bps{symbol="ZEC/USDT"} 4.013646 1757307465663
+novax_pos_spread_bps{symbol="BB/USDT"} 6.682259 1757307465663
+novax_pos_spread_bps{symbol="DOGE/USDT"} 0.432330 1757307465663
+novax_pos_spread_bps{symbol="PENGU/USDT"} 0.328974 1757307465663
+novax_pos_spread_bps{symbol="SPK/USDT"} 4.409942 1757307465663
+novax_pos_spread_bps{symbol="GPS/USDT"} 6.594131 1757307465663
+novax_pos_spread_bps{symbol="SOMI/USDT"} 3.165459 1757307465663
+novax_pos_spread_bps{symbol="BONK/USDT"} 4.663092 1757307465663
+novax_pos_spread_bps{symbol="FORM/USDT"} 1.036860 1757307465663
+novax_pos_spread_bps{symbol="PLUME/USDT"} 1.068890 1757307465663
+novax_pos_spread_bps{symbol="IOTX/USDT"} 3.764352 1757307465663
+novax_pos_spread_bps{symbol="ARKM/USDT"} 19.065777 1757307465663
+novax_pos_spread_bps{symbol="CTSI/USDT"} 12.262416 1757307465663
+novax_pos_spread_bps{symbol="OG/USDT"} 7.744780 1757307465663
+novax_pos_spread_bps{symbol="LA/USDT"} 8.806693 1757307465663
+novax_pos_spread_bps{symbol="DASH/USDT"} 3.970617 1757307465663
+novax_pos_spread_bps{symbol="HEI/USDT"} 2.292264 1757307465663
+novax_pos_spread_bps{symbol="WLD/USDT"} 7.971303 1757307465663
+# HELP novax_pos_spread_bps_avg Average position spread bps
+# TYPE novax_pos_spread_bps_avg gauge
+novax_pos_spread_bps_avg 7.001028 1757307465663

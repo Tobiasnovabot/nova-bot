@@ -1,0 +1,55 @@
+{"ts": "2025-09-01T22:10:47.255260+02:00", "event": "key_rotate", "meta": {"name": "BINANCE_KEY"}}
+{"ts": "2025-09-01T22:10:47.255685+02:00", "event": "confirm_start", "meta": {"action": "risk_level_change", "role": "admin"}}
+{"ts": "2025-09-01T22:10:47.256035+02:00", "event": "confirm_final", "meta": {"action": "risk_level_change", "role": "admin"}}
+{"ts": "2025-09-01T22:10:47.256114+02:00", "event": "unit_test_event", "meta": {"k": 1}}
+{"ts": "2025-09-01T22:10:47.256620+02:00", "event": "tax_export", "meta": {"year": 2025, "rows": 2, "path": "/home/nova/nova-bot/data/data/tax_export_2025.csv"}}
+{"ts": "2025-09-01T23:20:17.391136+02:00", "event": "key_rotate", "meta": {"name": "BINANCE_KEY"}}
+{"ts": "2025-09-01T23:20:17.391573+02:00", "event": "confirm_start", "meta": {"action": "risk_level_change", "role": "admin"}}
+{"ts": "2025-09-01T23:20:17.391952+02:00", "event": "confirm_final", "meta": {"action": "risk_level_change", "role": "admin"}}
+{"ts": "2025-09-01T23:20:17.392052+02:00", "event": "unit_test_event", "meta": {"k": 1}}
+{"ts": "2025-09-01T23:20:17.392615+02:00", "event": "tax_export", "meta": {"year": 2025, "rows": 2, "path": "/home/nova/nova-bot/data/data/tax_export_2025.csv"}}
+{"ts": "2025-09-01T23:20:29.639299+02:00", "event": "key_rotate", "meta": {"name": "BINANCE_KEY"}}
+{"ts": "2025-09-01T23:20:29.639778+02:00", "event": "confirm_start", "meta": {"action": "risk_level_change", "role": "admin"}}
+{"ts": "2025-09-01T23:20:29.640101+02:00", "event": "confirm_final", "meta": {"action": "risk_level_change", "role": "admin"}}
+{"ts": "2025-09-01T23:20:29.640198+02:00", "event": "unit_test_event", "meta": {"k": 1}}
+{"ts": "2025-09-01T23:20:29.640751+02:00", "event": "tax_export", "meta": {"year": 2025, "rows": 2, "path": "/home/nova/nova-bot/data/data/tax_export_2025.csv"}}
+{"ts": "2025-09-01T23:27:46.506335+02:00", "event": "key_rotate", "meta": {"name": "BINANCE_KEY"}}
+{"ts": "2025-09-01T23:27:46.506813+02:00", "event": "confirm_start", "meta": {"action": "risk_level_change", "role": "admin"}}
+{"ts": "2025-09-01T23:27:46.507149+02:00", "event": "confirm_final", "meta": {"action": "risk_level_change", "role": "admin"}}
+{"ts": "2025-09-01T23:27:46.507247+02:00", "event": "unit_test_event", "meta": {"k": 1}}
+{"ts": "2025-09-01T23:27:46.507836+02:00", "event": "tax_export", "meta": {"year": 2025, "rows": 2, "path": "/home/nova/nova-bot/data/data/tax_export_2025.csv"}}
+{"ts": "2025-09-01T23:33:38.931510+02:00", "event": "key_rotate", "meta": {"name": "BINANCE_KEY"}}
+{"ts": "2025-09-01T23:33:38.932060+02:00", "event": "confirm_start", "meta": {"action": "risk_level_change", "role": "admin"}}
+{"ts": "2025-09-01T23:33:38.932408+02:00", "event": "confirm_final", "meta": {"action": "risk_level_change", "role": "admin"}}
+{"ts": "2025-09-01T23:33:38.932508+02:00", "event": "unit_test_event", "meta": {"k": 1}}
+{"ts": "2025-09-01T23:33:38.933096+02:00", "event": "tax_export", "meta": {"year": 2025, "rows": 2, "path": "/home/nova/nova-bot/data/data/tax_export_2025.csv"}}
+{"ts": "2025-09-01T23:42:36.943267+02:00", "event": "key_rotate", "meta": {"name": "BINANCE_KEY"}}
+{"ts": "2025-09-01T23:42:36.943830+02:00", "event": "confirm_start", "meta": {"action": "risk_level_change", "role": "admin"}}
+{"ts": "2025-09-01T23:42:36.944174+02:00", "event": "confirm_final", "meta": {"action": "risk_level_change", "role": "admin"}}
+{"ts": "2025-09-01T23:42:36.944297+02:00", "event": "unit_test_event", "meta": {"k": 1}}
+{"ts": "2025-09-01T23:42:36.944920+02:00", "event": "tax_export", "meta": {"year": 2025, "rows": 2, "path": "/home/nova/nova-bot/data/data/tax_export_2025.csv"}}
+{"ts": "2025-09-01T23:48:26.348167+02:00", "event": "key_rotate", "meta": {"name": "BINANCE_KEY"}}
+{"ts": "2025-09-01T23:48:26.348613+02:00", "event": "confirm_start", "meta": {"action": "risk_level_change", "role": "admin"}}
+{"ts": "2025-09-01T23:48:26.348996+02:00", "event": "confirm_final", "meta": {"action": "risk_level_change", "role": "admin"}}
+{"ts": "2025-09-01T23:48:26.349103+02:00", "event": "unit_test_event", "meta": {"k": 1}}
+{"ts": "2025-09-01T23:48:26.349690+02:00", "event": "tax_export", "meta": {"year": 2025, "rows": 2, "path": "/home/nova/nova-bot/data/data/tax_export_2025.csv"}}
+{"ts": "2025-09-01T23:53:32.244741+02:00", "event": "key_rotate", "meta": {"name": "BINANCE_KEY"}}
+{"ts": "2025-09-01T23:53:32.245262+02:00", "event": "confirm_start", "meta": {"action": "risk_level_change", "role": "admin"}}
+{"ts": "2025-09-01T23:53:32.245607+02:00", "event": "confirm_final", "meta": {"action": "risk_level_change", "role": "admin"}}
+{"ts": "2025-09-01T23:53:32.245708+02:00", "event": "unit_test_event", "meta": {"k": 1}}
+{"ts": "2025-09-01T23:53:32.246327+02:00", "event": "tax_export", "meta": {"year": 2025, "rows": 2, "path": "/home/nova/nova-bot/data/data/tax_export_2025.csv"}}
+{"ts": "2025-09-02T02:56:14.308011+02:00", "event": "key_rotate", "meta": {"name": "BINANCE_KEY"}}
+{"ts": "2025-09-02T02:56:14.308502+02:00", "event": "confirm_start", "meta": {"action": "risk_level_change", "role": "admin"}}
+{"ts": "2025-09-02T02:56:14.308872+02:00", "event": "confirm_final", "meta": {"action": "risk_level_change", "role": "admin"}}
+{"ts": "2025-09-02T02:56:14.308954+02:00", "event": "unit_test_event", "meta": {"k": 1}}
+{"ts": "2025-09-02T02:56:14.309624+02:00", "event": "tax_export", "meta": {"year": 2025, "rows": 2, "path": "/home/nova/nova-bot/data/data/tax_export_2025.csv"}}
+{"ts": "2025-09-03T10:19:30.996503+02:00", "event": "key_rotate", "meta": {"name": "BINANCE_KEY"}}
+{"ts": "2025-09-03T10:19:30.997006+02:00", "event": "confirm_start", "meta": {"action": "risk_level_change", "role": "admin"}}
+{"ts": "2025-09-03T10:19:30.997393+02:00", "event": "confirm_final", "meta": {"action": "risk_level_change", "role": "admin"}}
+{"ts": "2025-09-03T10:19:30.997524+02:00", "event": "unit_test_event", "meta": {"k": 1}}
+{"ts": "2025-09-03T10:19:30.998186+02:00", "event": "tax_export", "meta": {"year": 2025, "rows": 2, "path": "/home/nova/nova-bot/data/data/tax_export_2025.csv"}}
+{"ts": "2025-09-03T10:32:09.151589+02:00", "event": "key_rotate", "meta": {"name": "BINANCE_KEY"}}
+{"ts": "2025-09-03T10:32:09.152062+02:00", "event": "confirm_start", "meta": {"action": "risk_level_change", "role": "admin"}}
+{"ts": "2025-09-03T10:32:09.152408+02:00", "event": "confirm_final", "meta": {"action": "risk_level_change", "role": "admin"}}
+{"ts": "2025-09-03T10:32:09.152508+02:00", "event": "unit_test_event", "meta": {"k": 1}}
+{"ts": "2025-09-03T10:32:09.153146+02:00", "event": "tax_export", "meta": {"year": 2025, "rows": 2, "path": "/home/nova/nova-bot/data/data/tax_export_2025.csv"}}

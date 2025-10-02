@@ -1,0 +1,38 @@
+{
+  "ema": {
+    "alpha": 1.0,
+    "beta": 1.0
+  },
+  "rsi": {
+    "alpha": 1.0,
+    "beta": 1.0
+  },
+  "bo": {
+    "alpha": 1.0,
+    "beta": 1.0
+  },
+  "macd": {
+    "alpha": 1.0,
+    "beta": 1.0
+  },
+  "bb": {
+    "alpha": 1.0,
+    "beta": 1.0
+  },
+  "mr": {
+    "alpha": 1.0,
+    "beta": 1.0
+  },
+  "vwap": {
+    "alpha": 1.0,
+    "beta": 1.0
+  },
+  "kc": {
+    "alpha": 1.0,
+    "beta": 1.0
+  },
+  "adx": {
+    "alpha": 1.0,
+    "beta": 1.0
+  }
+}

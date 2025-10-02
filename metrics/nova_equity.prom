@@ -1,0 +1,3 @@
+# HELP nova_equity_usd Latest account equity in USD.
+# TYPE nova_equity_usd gauge
+nova_equity_usd 4875.774228562881 1757354595000

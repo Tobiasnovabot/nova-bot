@@ -1,0 +1,20 @@
+groups:
+- name: novax_notional
+  rules:
+  - alert: NovaXOrderCapped
+    expr: increase(novax_order_guard_total{action="capped"}[5m]) > 0
+    for: 1m
+    labels: {severity: warning}
+    annotations: {summary: "Order notional capped in last 5m"}
+
+  - alert: NovaXOrderBelowMin
+    expr: increase(novax_order_guard_total{action="below_min"}[5m]) > 0
+    for: 1m
+    labels: {severity: info}
+    annotations: {summary: "Order below MIN notional in last 5m"}
+
+  - alert: NovaXOrderBreachAllowed
+    expr: increase(novax_order_guard_total{action="breach_allowed"}[5m]) > 0
+    for: 1m
+    labels: {severity: critical}
+    annotations: {summary: "Breach allowed in last 5m (check ALLOW_NOTIONAL_BREACH)"}

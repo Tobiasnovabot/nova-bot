@@ -1,0 +1,12 @@
+# HELP novax_size_fraction Kelly-based sizing fraction
+# TYPE novax_size_fraction gauge
+novax_size_fraction 0.000000 1757307365046
+# HELP novax_size_usd Position size in USD
+# TYPE novax_size_usd gauge
+novax_size_usd 25.00 1757307365046
+# HELP novax_size_winrate Win rate estimate 0-1
+# TYPE novax_size_winrate gauge
+novax_size_winrate 0.000000 1757307365046
+# HELP novax_size_payoff Payoff ratio avg_win/avg_loss
+# TYPE novax_size_payoff gauge
+novax_size_payoff 1.000000 1757307365046

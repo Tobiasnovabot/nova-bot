@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -e
+[ -f "$HOME/nova-bot/bot.pid" ] && kill "$(cat $HOME/nova-bot/bot.pid)" 2>/dev/null || pkill -f 'bot_main\.py' || true
+rm -f "$HOME/nova-bot/bot.pid" /tmp/novax-tg/lock
+echo "Stoppet."
